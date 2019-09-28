@@ -1,0 +1,79 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat, sans-serif !important;
+}
+
+.navbar-effect {
+    background-color: rgba(247, 247, 247, 0.75);
+    transition: all 0.7s ease;
+}
+.navbar-collapse {
+    transition: all 0.7s ease;
+}
+
+.movie-filter {
+    height: 100vh;
+}
+
+.header-bh {
+    position: absolute;
+    bottom: 50%;
+    left: 5%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0,0,0.75);
+    padding: 25px;
+}
+
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    margin: 2.4rem auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* -- Animated hr -- */
+
+.progressDiv {
+    background: rgba(1, 15, 30, 0.1);
+    height: 1px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progressDiv::before {
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-name: progressDiv;
+    background: #111;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    width: 80px;
+}
+
+@keyframes progressDiv {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(1920px);
+    }
+}
+
+.special-color {
+    background-color: #37474F;
+    color: white;
+}
+
+.special-color-dark {
+    background-color: #263238;
+}
