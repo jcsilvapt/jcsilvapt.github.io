@@ -17,8 +17,9 @@
 	<link rel="preload" href="./assets/videos/Cascade - 300.mp4" as="video" type="video/mp4">
 	<link rel="preload" href="./assets/videos/agua-natural.mp4" as="video" type="video/mp4">
 </head>
-<body>
+<body onload="timer()">
 
+	<div class="loader"></div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
 	<div class="container">
@@ -121,6 +122,16 @@
 
 <!-- Java Script Codes -->
 <script>
+	var myVar;
+	
+	function timer() {
+		myVar = setTimeout(showPage, 3000)
+	}
+	
+	function showPage() {
+		document.getElementByID("loader").style.display = "none";
+	}
+	
     document.ontouchstart = function(){ document.getElementById('wp').play(); }
 	var navActive = false;
 	var aHeight = 100;
