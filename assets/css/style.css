@@ -4,6 +4,8 @@ body {
     font-family: Montserrat, sans-serif !important;
 }
 
+body::-webkit-scrollbar { width: 0 !important }
+
 .navbar-effect {
     background-color: rgba(247, 247, 247, 0.75);
     transition: all 0.7s ease;
@@ -238,7 +240,39 @@ hr {
 .no-js h1 {
     color: #222222;
 }
+.abs p {
+    font-size: 18px;
+}
+.dot:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;
+}
 
+#fadeout {
+    opacity: 1;
+    transition: 1s opacity;
+    text-align: center;
+}
 
-
+@keyframes dots {
+    0%, 20% {
+        color: rgba(0,0,0,0);
+        text-shadow:
+                .25em 0 0 rgba(0,0,0,0),
+                .5em 0 0 rgba(0,0,0,0);}
+    40% {
+        color: white;
+        text-shadow:
+                .25em 0 0 rgba(0,0,0,0),
+                .5em 0 0 rgba(0,0,0,0);}
+    60% {
+        text-shadow:
+                .25em 0 0 white,
+                .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+        text-shadow:
+                .25em 0 0 white,
+                .5em 0 0 white;
+    }
+}
 
