@@ -17,161 +17,161 @@
 	<link rel="preload" href="./assets/videos/Cascade - 300.mp4" as="video" type="video/mp4">
 	<link rel="preload" href="./assets/videos/agua-natural.mp4" as="video" type="video/mp4">
 </head>
-<body onload="timer()">
+	<body>
 
-	<div id="loader">
-		<div class="container">
-			<h3>Loading...</h3>
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+			<div id="loader-grettings">Welcome</div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
 		</div>
-	</div>
-	<div id="Content" style="display:none;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="#">Jorge Silva</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Services</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Contact</a>
-				</li>
-			</ul>
+		
+		<div id="content">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#">Jorge Silva</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Services</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Contact</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!--Carousel Wrapper-->
+		<div id="video-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+			<!--Indicators-->
+			<ol class="carousel-indicators">
+				<li data-target="#video-carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#video-carousel" data-slide-to="1"></li>
+			</ol>
+			<!--/.Indicators-->
+			<!--Slides-->
+			<div class="movie-filter">
+				<div class="carousel-inner" role="listbox">
+					<div class="carousel-item active movie-filter">
+						<video class="video-fluid " autoplay loop muted>
+							<source src="./assets/videos/Cascade - 300.mp4" type="video/mp4" />
+						</video>
+					</div>
+					<div class="carousel-item movie-filter">
+						<video class="video-fluid " autoplay loop muted>
+							<source src="./assets/videos/agua-natural.mp4" type="video/mp4" />
+						</video>
+					</div>
+					<div class="header-bh flex-grow-1">
+						<h3 class="h3-responsive text-left">Bem vindos</h3>
+						<p class="text-left">Ao meu portfolio</p>
+					</div>
+				</div>
+			</div>
+			<!--/.Slides-->
+			<!--Controls
+			<a class="carousel-control-prev" href="#video-carousel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#video-carousel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+			/.Controls-->
 		</div>
-	</div>
-</nav>
-
-<!--Carousel Wrapper-->
-<div id="video-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-	<!--Indicators-->
-	<ol class="carousel-indicators">
-		<li data-target="#video-carousel" data-slide-to="0" class="active"></li>
-		<li data-target="#video-carousel" data-slide-to="1"></li>
-	</ol>
-	<!--/.Indicators-->
-	<!--Slides-->
-	<div class="movie-filter">
-		<div class="carousel-inner" role="listbox">
-			<div class="carousel-item active movie-filter">
-				<video class="video-fluid " autoplay loop muted>
-					<source src="./assets/videos/Cascade - 300.mp4" type="video/mp4" />
-				</video>
+		<!--Carousel Wrapper-->
+		<hr class="progressDiv">
+		<section class="py-5">
+			<div class="container">
+				<h2 class="font-weight-light">Page Content</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
 			</div>
-			<div class="carousel-item movie-filter">
-				<video class="video-fluid " autoplay loop muted>
-					<source src="./assets/videos/agua-natural.mp4" type="video/mp4" />
-				</video>
+		</section>
+
+		<footer class="page-footer font-small special-color pt-4">
+			<div class="container-fluid text-center text-md-left">
+				<div class="row">
+					<div class="col-md-6 mt-md-0 mt-3">
+						<h5 class="text-uppercase">Footer Content</h5>
+						<p>Here you can use rows and columns to organize your footer content.</p>
+					</div>
+					<hr class="clearfix w-100 d-md-none pb-3">
+					<div class="col-md-3 mb-md-0 mb-3">
+						<h5 class="text-uppercase">Links</h5>
+						<ul class="list-unstyled">
+							<li>
+								<a href="#">Link 1</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="header-bh flex-grow-1">
-				<h3 class="h3-responsive text-left">Bem vindos</h3>
-				<p class="text-left">Ao meu portfolio</p>
+			<div class="footer-copyright text-center py-3 special-color-dark">
+				© 2018 Copyright:
+				<a href="#"> S-Designs</a>
 			</div>
-		</div>
+		</footer>
 	</div>
-	<!--/.Slides-->
-	<!--Controls
-	<a class="carousel-control-prev" href="#video-carousel" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#video-carousel" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	</a>
-	/.Controls-->
-</div>
-<!--Carousel Wrapper-->
-<hr class="progressDiv">
-<section class="py-5">
-	<div class="container">
-		<h2 class="font-weight-light">Page Content</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
-	</div>
-</section>
 
-<footer class="page-footer font-small special-color pt-4">
-	<div class="container-fluid text-center text-md-left">
-		<div class="row">
-			<div class="col-md-6 mt-md-0 mt-3">
-				<h5 class="text-uppercase">Footer Content</h5>
-				<p>Here you can use rows and columns to organize your footer content.</p>
-			</div>
-			<hr class="clearfix w-100 d-md-none pb-3">
-			<div class="col-md-3 mb-md-0 mb-3">
-				<h5 class="text-uppercase">Links</h5>
-				<ul class="list-unstyled">
-					<li>
-						<a href="#">Link 1</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="footer-copyright text-center py-3 special-color-dark">
-		© 2018 Copyright:
-		<a href="#"> S-Designs</a>
-	</div>
-</footer>
-</div>
+	<!-- Java Script Codes -->
+	<script>
+		$(document).ready(function() {
+		 
+			setTimeout(function(){
+				$('body').addClass('loaded');
+				$('h1').css('color','#222222');
+			}, 3000);
+		 
+		});
+		
+		document.ontouchstart = function(){ document.getElementById('wp').play(); }
+		var navActive = false;
+		var aHeight = 100;
 
-<!-- Java Script Codes -->
-<script>
-	var myVar;
-	
-	function timer() {
-		myVar = setTimeout(showPage, 3000)
-	}
-	
-	function showPage() {
-		document.getElementById("loader").style.display = "none";
-		document.getElementById("Content").style.display = "block";
-	}
-	
-    document.ontouchstart = function(){ document.getElementById('wp').play(); }
-	var navActive = false;
-	var aHeight = 100;
+		$('.navbar-effect').css({height:"100px"});
+		$(window).scroll(function () {
+				if ($(document).scrollTop() > 100) {
+					if(!navActive) {
+						$('.navbar-effect').css({height: "60px"});
+					}
+					aHeight = 60;
+				} else {
+					if (!navActive) {
+						$('.navbar-effect').css({height: "100px"});
+					}
+					aHeight = 100;
+				}
+		});
 
-	$('.navbar-effect').css({height:"100px"});
-	$(window).scroll(function () {
-            if ($(document).scrollTop() > 100) {
-                if(!navActive) {
-                    $('.navbar-effect').css({height: "60px"});
-                }
-                aHeight = 60;
-            } else {
-                if (!navActive) {
-                    $('.navbar-effect').css({height: "100px"});
-                }
-                aHeight = 100;
-            }
-    });
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip();
 
-	$(document).ready(function () {
-	    $('[data-toggle="tooltip"]').tooltip();
+		});
+		$(document).on('click', '.navbar-toggler', function () {
+			if(!navActive) {
+				navActive = true;
+				$('.navbar-effect').css({height: "initial"});
+			} else {
+				navActive = false;
+				$('.navbar-effect').css({height: aHeight+"px"});
+			}
+		});
 
-    });
-	$(document).on('click', '.navbar-toggler', function () {
-		if(!navActive) {
-		    navActive = true;
-		    $('.navbar-effect').css({height: "initial"});
-		} else {
-		    navActive = false;
-            $('.navbar-effect').css({height: aHeight+"px"});
-		}
-    });
-
-</script>
-
-</body>
+	</script>
+	<script src="./assets/js/main.js"></script>
+	</body>
 </html>
