@@ -21,15 +21,13 @@ body::-webkit-scrollbar { width: 0 !important }
 
 .header-bh {
     position: absolute;
-    bottom: 50%;
-    left: 5%;
+    width: 100%;
+    height: auto;
+    top: 50vh;
     z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 25px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 hr {
