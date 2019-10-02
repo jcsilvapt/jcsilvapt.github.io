@@ -349,18 +349,9 @@ hr {
     text-align: center;
 }
 
-.fa.fa-battery-1.iSetting {
-    font-size: 4.286rem;
-    line-height: 105%;
-    padding: 0px;
-    position: relative;
-    text-align: center;
-}
-
-.fa.fa-battery-1.iColor {
-    color: #395ca3;
-}
-
 .textSetting {
     font-size: 1.5rem;
+}
+.iconSize {
+    font-size: 4rem;
 }
