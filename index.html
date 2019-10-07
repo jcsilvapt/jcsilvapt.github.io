@@ -21,38 +21,36 @@
 </head>
 	<body>
 
-		<div id="loader-wrapper">
+		<!--<div id="loader-wrapper">
 			<div id="loader"></div>
 			<div class="abs">
 				<p id="fadeout" class="dot">Loading Content</p>
 			</div>
 			<div class="loader-section section-left"></div>
 			<div class="loader-section section-right"></div>
-		</div>
+		</div>-->
 
 
 		<div id="content">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" id="navy">
 			<div class="container">
 				<a class="navbar-brand" href="#">Jorge Silva</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="#">Home
-								<span class="sr-only">(current)</span>
-							</a>
+				<div class="collapse navbar-collapse" >
+					<ul class="navbar-nav ml-auto" id="mainNav">
+						<li class="nav-item">
+							<a class="nav-link" href="#home">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">About</a>
+							<a class="nav-link" href="#skills">Skills</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Services</a>
+							<a class="nav-link" href="#services">Services</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Contact</a>
+							<a class="nav-link" href="#contacts">Contact</a>
 						</li>
 					</ul>
 				</div>
@@ -60,7 +58,7 @@
 		</nav>
 
 		<!--Carousel Wrapper-->
-		<div id="video-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+		<div id="home" class="carousel slide carousel-fade" data-ride="carousel">
 			<!--Indicators-->
 			<ol class="carousel-indicators">
 				<li data-target="#video-carousel" data-slide-to="0" class="active"></li>
@@ -100,7 +98,7 @@
 		</div>
 		<!--Carousel Wrapper-->
 		<hr class="progressDiv">
-		<section class="py-5">
+		<section id="skills" class="py-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -138,7 +136,7 @@
 			</div>
 		</section>
 
-		<footer class="page-footer font-small special-color pt-4">
+		<footer id="services" class="page-footer font-small special-color pt-4 target">
 			<div class="container-fluid text-center text-md-left">
 				<div class="row">
 					<div class="col-md-6 mt-md-0 mt-3">

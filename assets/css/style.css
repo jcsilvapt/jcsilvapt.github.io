@@ -3,6 +3,9 @@ body {
     padding: 0px;
     font-family: Montserrat, sans-serif !important;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body::-webkit-scrollbar { width: 0 !important }
 
