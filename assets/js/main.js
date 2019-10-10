@@ -51,7 +51,7 @@ $(document).on('click', '.navbar-toggler', function () {
 
 // Cache selectors
 var lastId,
-	topMenu = $("#mainNav"),
+	topMenu = $("#navbarResponsive"),
 	topMenuHeight = topMenu.outerHeight()+1,
 	// All list items
 	menuItems = topMenu.find("a"),
