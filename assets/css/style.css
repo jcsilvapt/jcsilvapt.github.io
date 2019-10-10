@@ -567,6 +567,13 @@ Efeitos Portfolio
     color: white;
 }
 
+@media only screen and (max-width: 720px) {
+    .fixImage {
+        width: 100%;
+        height: auto !important;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     #aboutMe .div-img-bg .about-img img {
         width: 100%;
@@ -575,5 +582,10 @@ Efeitos Portfolio
         margin-left: 20px;
         height: 400px;
         object-fit: cover;
+    }
+
+    .fixImage {
+        width: 100%;
+        height: auto !important;
     }
 }
