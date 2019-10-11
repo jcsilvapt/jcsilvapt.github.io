@@ -588,4 +588,8 @@ Efeitos Portfolio
         width: 100%;
         height: auto !important;
     }
+	
+	.col-sm {
+		margin-top: 25px;
+	}
 }
