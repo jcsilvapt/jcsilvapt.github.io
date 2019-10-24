@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>BlackJack - Jorge Silva - A44615 - PCM - LEIM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/blackjack_object.js"></script>
+        <script src="js/blackjack_manager.js"></script>
+    </head>
+    <body>
+        <header class="text-center">
+            <p>2º Projecto de PCM</p>
+        </header>
+        <section id="content">
+            <div class="container">
+                <div class="table">
+                    <div class="pane">
+                        <div class="container">
+                            <div class="title text-center fixTitle">
+                                <h1>Black Jack</h1>   
+                            </div>
+                            <div class="row py-4">
+                                <div class="col-2 text-center fixPadding">
+                                    <!-- GAME Info -->
+                                    <div class="row text-center">
+                                        <div class="resultHolder">
+                                            <h2 id="title">Resultado:</h2>
+                                            <p id="result">---</p>
+                                        </div>
+                                    </div>
+                                    <!-- GAME Info END -->
+                                    <!-- GAME Buttons -->
+                                    <div class="row">
+                                        <div class="btn-group-vertical fixPosition" role="group" aria-label="Vertical button group">
+                                            <button id="card" type="button" class="btn btn-primary" onclick="player_new_card()">Card</button>
+                                            <button id="stand" type="button" class="btn btn-danger" onclick="dealer_finish()">Stand</button>
+                                            <button id="new_game" type="button" class="btn btn-warning" onclick="new_game()">New Game</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-10 text-center">
+                                    <!-- DEALER Info -->
+                                   <div class="row">
+                                        <div class="col-sm">
+                                            <h1>Dealer</h1>
+                                            <div id="dealerIMG"></div>
+                                            <p id="dealer"></p>
+                                        </div>
+                                   </div>
+                                    <!-- DEALER Info END -->
+                                    <!-- PLAYER Info -->
+                                    <div class="row">
+                                            <div class="col-sm">
+                                                <h1>Player</h1>
+                                                <div id="playerIMG"></div>
+                                                <p id="player"></p>
+                                            </div>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        Debug Console: <input type="checkbox" name="debug_active" id="btnDebug" onclick="active()">
+        <section id="sec_debug" style="display: none;">
+            <h1>Debug</h1>
+            <p id="debug"></p>
+        </section>
+        <script>
+            window.onload = new_game();
+        </script>
+    </body>
+</html>
