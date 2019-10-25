@@ -22,12 +22,12 @@ html {
 
 @media only screen and (max-width: 1024px) {
     .table {
-        height: 75vh !important;
+        height: 100% !important;
     }
 }
 @media only screen and (max-width: 361px) {
     .table {
-        height: 100vh !important;
+        height: 100% !important;
     }
 }
 
@@ -85,9 +85,11 @@ h1 {
     color:white;
 }
 
-#player {
+#player, #dealer {
     color:white;
 }
+
+
 
 #result {
     font-size: 1.5rem;
