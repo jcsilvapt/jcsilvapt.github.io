@@ -114,51 +114,51 @@ function draw_card(card, where) {
     switch (card[0]) {
         case "Ouros":
             if (card[1] === 1 || card[1] === 13) {
-                x.setAttribute("src", "images/ace_of_diamonds.png");
+                x.setAttribute("src", "images/ace_of_diamonds.jpg");
             } else {
                 for (var i = 0; i < 13; i++) {
                     if (card[1] === i) {
-                        x.setAttribute("src", "images/" + i + "_of_diamonds.png");
+                        x.setAttribute("src", "images/" + i + "_of_diamonds.jpg");
                     }
                 }
             }
             break;
         case "Paus":
             if (card[1] === 1 || card[1] === 13) {
-                x.setAttribute("src", "images/ace_of_clubs.png");
+                x.setAttribute("src", "images/ace_of_clubs.jpg");
             } else {
                 for (var i = 0; i < 13; i++) {
                     if (card[1] === i) {
-                        x.setAttribute("src", "images/" + i + "_of_clubs.png");
+                        x.setAttribute("src", "images/" + i + "_of_clubs.jpg");
                     }
                 }
             }
             break;
         case "Copas":
             if (card[1] === 1 || card[1] === 13) {
-                x.setAttribute("src", "images/ace_of_hearts.png");
+                x.setAttribute("src", "images/ace_of_hearts.jpg");
             } else {
                 for (var i = 0; i < 13; i++) {
                     if (card[1] === i) {
-                        x.setAttribute("src", "images/" + i + "_of_hearts.png");
+                        x.setAttribute("src", "images/" + i + "_of_hearts.jpg");
                     }
                 }
             }
             break;
         case "Espadas":
             if (card[1] === 1 || card[1] === 13) {
-                x.setAttribute("src", "images/ace_of_spades.png");
+                x.setAttribute("src", "images/ace_of_spades.jpg");
             } else {
                 for (var i = 0; i < 13; i++) {
                     if (card[1] === i) {
-                        x.setAttribute("src", "images/" + i + "_of_spades.png");
+                        x.setAttribute("src", "images/" + i + "_of_spades.jpg");
                     }
                 }
             }
             break;
 
         default:
-            x.setAttribute("src", "images/red_joker.png");
+            x.setAttribute("src", "images/red_joker.jpg");
             x.setAttribute("id", "front");
             break;
     }
