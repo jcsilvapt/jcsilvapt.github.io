@@ -163,7 +163,7 @@ function draw_card(card, where) {
             break;
     }
     x.setAttribute("width", "100");
-    x.setAttribute("height", "130");
+    x.setAttribute("height", "145");
     x.setAttribute("alt", "cenas");
     x.setAttribute("padding", "5");
     x.classList.add("cardEffect");
