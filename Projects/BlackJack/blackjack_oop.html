@@ -15,7 +15,7 @@
     </head>
     <body>
         <header class="text-center">
-            <p>2º Projecto de PCM</p>
+            <h1>2º Projecto de PCM</h1>
         </header>
         <section id="content">
             <div class="container">
@@ -25,30 +25,30 @@
                             <div class="title text-center fixTitle">
                                 <h1>Black Jack</h1>   
                             </div>
-                            <div class="row py-4">
+                            <!-- GAME Buttons -->
+                            <div class="row">
+                                <div class="btn-group-horizontal fixPosition" role="group" aria-label="Vertical button group">
+                                    <button id="card" type="button" class="btn btn-primary" onclick="player_new_card()">Card</button>
+                                    <button id="stand" type="button" class="btn btn-danger" onclick="dealer_finish()">Stand</button>
+                                    <button id="new_game" type="button" class="btn btn-warning" onclick="new_game()">New Game</button>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <!-- GAME Info -->
                                 <div class="col-2 text-center fixPadding">
-                                    <!-- GAME Info -->
                                     <div class="row text-center">
                                         <div class="resultHolder">
                                             <h2 id="title">Resultado:</h2>
                                             <p id="result">---</p>
                                         </div>
                                     </div>
-                                    <!-- GAME Info END -->
-                                    <!-- GAME Buttons -->
-                                    <div class="row">
-                                        <div class="btn-group-vertical fixPosition" role="group" aria-label="Vertical button group">
-                                            <button id="card" type="button" class="btn btn-primary" onclick="player_new_card()">Card</button>
-                                            <button id="stand" type="button" class="btn btn-danger" onclick="dealer_finish()">Stand</button>
-                                            <button id="new_game" type="button" class="btn btn-warning" onclick="new_game()">New Game</button>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-10 text-center">
+                                <!-- GAME Info END -->
+                                <div class="col-9 text-center">
                                     <!-- DEALER Info -->
                                    <div class="row">
                                         <div class="col-sm">
-                                            <h1>Dealer</h1>
+                                            <h1>Dealer Cards</h1>
                                             <div id="dealerIMG"></div>
                                             <p id="dealer"></p>
                                         </div>
@@ -57,7 +57,7 @@
                                     <!-- PLAYER Info -->
                                     <div class="row">
                                             <div class="col-sm">
-                                                <h1>Player</h1>
+                                                <h1>Player Cards</h1>
                                                 <div id="playerIMG"></div>
                                                 <p id="player"></p>
                                             </div>

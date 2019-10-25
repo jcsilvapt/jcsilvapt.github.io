@@ -166,6 +166,7 @@ function draw_card(card, where) {
     x.setAttribute("height", "130");
     x.setAttribute("alt", "cenas");
     x.setAttribute("padding", "5");
+    x.classList.add("cardEffect");
     document.getElementById(where).appendChild(x);
 }
 

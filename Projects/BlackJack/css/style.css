@@ -29,6 +29,13 @@ html {
     .table {
         height: 100% !important;
     }
+
+    .resultHolder > h2 {
+        font-size: 2rem;
+    }
+    .resultHolder > p {
+        font-size: 1.5rem;
+    }
 }
 
 @media only screen and (min-width: 1023px) and (max-width: 1024px) {
@@ -100,5 +107,10 @@ h1 {
 }
 
 .fixPadding {
-    padding-left: 15px;
+    margin-left: 6px;
+}
+
+.cardEffect {
+    margin-left: 5px;
+    box-shadow: 2px 2px 1.5px rgba(0, 0, 0, 0.259);
 }
