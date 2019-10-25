@@ -39,6 +39,7 @@ html {
 
 .table {
     height: 70vh;
+    min-height: 540px;
     background-color: brown;
     padding: 15px 15px;
     border-radius: 25px;
