@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>WebForms - Jorge Silva - A44615 - PCM - LEIM</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -14,29 +15,138 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </head>
     <body>
-        <div class="container h-100 animation" data-aos="fade-up"
-        data-aos-duration="100">
+        <div id="begin" class="container h-100 animation" data-aos="fade-out">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 text-center">
                     <h1>Survey bueda louco<br></h1>
                     <p>Por favor não leia isto nem responda, pois nada de especial vai ser feito com estes dados</p>
                     <p>encher com mais...</p>
-                    <a type="button" href="#userField" class="btn btn-primary btn-lg">Começar</a>
+                    <button type="button" onclick="nextForm('userField-1')" class="btn btn-primary btn-lg">Começar</button>
                 </div>
             </div>
         </div>
-        <div id="userField"></div>
-        <div class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+        <div id="userField-1" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 text-center">
-                    <h1>Survey buedasdasdasdasdasda louco<br></h1>
-                    <p>Por favor não leia isto nem responda, pois nada de especial vai ser feito com estes dados</p>                        <p>encher com mais...</p>
-                    <button type="button" class="btn btn-primary btn-lg">Começar</button>
+                    <h1>Primeiro, vamos conhece-lo :)<br></h1>
+                    <button type="button" onclick="nextForm('userField-2')" class="btn btn-primary btn-lg">Continuar</button>
+                </div>
+            </div>
+        </div>
+		<div id="userField-2" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-10 text-center">
+                    <h2>a - Sei que não se pergunta mas... indique a sua idade?<br><br></h2>
+					<div class="form-check option1" for="defaultCheck1"	>
+						<input class="form-check-input" type="checkbox" value="18" id="defaultCheck1">
+						<label class="form-check-label" for="defaultCheck1">
+							< 18
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+						<label class="form-check-label" for="defaultCheck2">
+							18-25
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+						<label class="form-check-label" for="defaultCheck3">
+							26-33
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+						<label class="form-check-label" for="defaultCheck4">
+							34-40
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+						<label class="form-check-label" for="defaultCheck5">
+							40 >
+						</label>
+					</div>
+					<br>
+                    <button type="button" onclick="nextForm('userField-3')" class="btn btn-primary btn-lg">Continuar</button>
+                </div>
+            </div>
+        </div>
+		<div id="userField-3" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-10 text-center">
+                    <h2>b - Género<br><br></h2>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="18" id="defaultCheck1">
+						<label class="form-check-label" for="defaultCheck1">
+							Masculino
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+						<label class="form-check-label" for="defaultCheck2">
+							Feminino
+						</label>
+					</div>
+					<br>
+                    <button type="button" onclick="nextForm('userField-4')" class="btn btn-primary btn-lg">Continuar</button>
+                </div>
+            </div>
+        </div>
+		<div id="userField-4" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-10 text-center">
+                    <h2>c - Com que frequência usa a Internet?<br><br></h2>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="18" id="defaultCheck1">
+						<label class="form-check-label" for="defaultCheck1" >
+							Mais do que 2 horas/dia 
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+						<label class="form-check-label" for="defaultCheck2">
+							Menos do que 2 horas/dia 
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+						<label class="form-check-label" for="defaultCheck2">
+							Várias vezes por semana
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+						<label class="form-check-label" for="defaultCheck2">
+							Semanalmente
+						</label>
+					</div>
+					<div class="form-check option1">
+						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+						<label class="form-check-label" for="defaultCheck2">
+							Mensalmente 
+						</label>
+					</div>
+					<br>
+                    <button type="button" onclick="nextForm('userField-3')" class="btn btn-primary btn-lg">Continuar</button>
                 </div>
             </div>
         </div>
         <script>
             AOS.init();
+			
+			init();
+			
+			function init() {
+				$(document).ready(function(){
+					$(this).scrollTop(0);
+				});
+			}
+			
+			function nextForm(h) {
+				var top = document.getElementById(h).offsetTop;
+				window.scrollTo(0, top);
+			}
         </script>
     </body>
 </html>
