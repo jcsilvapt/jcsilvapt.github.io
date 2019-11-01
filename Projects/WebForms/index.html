@@ -10,7 +10,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="assets/css/style.css">
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </head>
@@ -32,121 +33,101 @@
                     <button type="button" onclick="nextForm('userField-2')" class="btn btn-primary btn-lg">Continuar</button>
                 </div>
             </div>
-        </div>
-		<div id="userField-2" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
-            <div class="row h-100 justify-content-center align-items-center">
-                <div class="col-10 text-center">
-                    <h2>a - Sei que não se pergunta mas... indique a sua idade?<br><br></h2>
-					<div class="form-check option1" for="defaultCheck1"	>
-						<input class="form-check-input" type="checkbox" value="18" id="defaultCheck1">
-						<label class="form-check-label" for="defaultCheck1">
-							< 18
-						</label>
+		</div>
+			<div id="userField-2" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<h2>a - Sei que não se pergunta mas... indique a sua idade?<br><br></h2>
+						<form name="age" method="POST" action="#userField-3" onsubmit="return false">
+							<div class="form-check option1" for="defaultCheck1"	>
+								<input class="form-check-input" type="radio" name="age" value="-18" id="age1">
+								<label class="form-check-label" for="age1">
+									< 18
+								</label>
+							</div>
+							<div class="form-check option1">
+								<input class="form-check-input" type="radio" name="age" value="18-25" id="age2" required>
+								<label class="form-check-label" for="age2">
+									18-25
+								</label>
+							</div>
+							<div class="form-check option1">
+								<input class="form-check-input" type="radio" name="age" value="26-33" id="age3">
+								<label class="form-check-label" for="age3">
+									26-33
+								</label>
+							</div>
+							<div class="form-check option1">
+								<input class="form-check-input" type="radio" name="age" value="34-40" id="age4">
+								<label class="form-check-label" for="age4">
+									34-40
+								</label>
+							</div>
+							<div class="form-check option1">
+								<input class="form-check-input" type="radio" name="age" value="40+" id="age5">
+								<label class="form-check-label" for="age5">
+									40 >
+								</label>
+							</div>
+							<br>
+							<input type="submit" name="age" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-3')">
+						</form>
 					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-						<label class="form-check-label" for="defaultCheck2">
-							18-25
-						</label>
+				</div>
+			</div>
+			<div id="userField-3" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<h2>b - Género<br><br></h2>
+						<form name="gender" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="form-check option1">
+								<input class="form-check-input" type="radio" value="male" name="gender" id="gender1" required>
+								<label class="form-check-label" for="gender1">
+									Masculino
+								</label>
+							</div>
+							<div class="form-check option1">
+								<input class="form-check-input" type="radio" value="female" name="gender" id="gender2">
+								<label class="form-check-label" for="gender2">
+									Feminino
+								</label>
+							</div>
+							<br>
+							<input type="submit" name="gender" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-4')">
+						</form>
 					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-						<label class="form-check-label" for="defaultCheck3">
-							26-33
-						</label>
+				</div>
+			</div>
+			<div id="userField-4" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<h2>d - Indique, por ordem de preferência, os Web browsers que mais utiliza.<br></h2>
+						<p>Deve indicar 3</p><br>
+						<form name="internet" method="POST" action="#userField-5" onsubmit="return false">
+							<h3>utilizo todos os dias...</h3>
+							<div class="option2">
+								<input type="text" list="browsers" placeholder="Escreva aqui o browser que mais utiliza" onfocus="showOptions(true)" onfocusout="showOptions(false)"/>
+								<div id="opt1" class="browserOptions">
+									<div class="option1" onclick="setFocus(this)"><span>Chrome</span></div>
+									<div class="option1" onclick="setFocus(this)"><span>Edge</span></div>
+								</div>
+							</div>
+							<input type="submit" name="gender" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-5')">
+						</form>
 					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-						<label class="form-check-label" for="defaultCheck4">
-							34-40
-						</label>
-					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
-						<label class="form-check-label" for="defaultCheck5">
-							40 >
-						</label>
-					</div>
-					<br>
-                    <button type="button" onclick="nextForm('userField-3')" class="btn btn-primary btn-lg">Continuar</button>
-                </div>
-            </div>
-        </div>
-		<div id="userField-3" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
-            <div class="row h-100 justify-content-center align-items-center">
-                <div class="col-10 text-center">
-                    <h2>b - Género<br><br></h2>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="18" id="defaultCheck1">
-						<label class="form-check-label" for="defaultCheck1">
-							Masculino
-						</label>
-					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-						<label class="form-check-label" for="defaultCheck2">
-							Feminino
-						</label>
-					</div>
-					<br>
-                    <button type="button" onclick="nextForm('userField-4')" class="btn btn-primary btn-lg">Continuar</button>
-                </div>
-            </div>
-        </div>
-		<div id="userField-4" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
-            <div class="row h-100 justify-content-center align-items-center">
-                <div class="col-10 text-center">
-                    <h2>c - Com que frequência usa a Internet?<br><br></h2>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="18" id="defaultCheck1">
-						<label class="form-check-label" for="defaultCheck1" >
-							Mais do que 2 horas/dia 
-						</label>
-					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-						<label class="form-check-label" for="defaultCheck2">
-							Menos do que 2 horas/dia 
-						</label>
-					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-						<label class="form-check-label" for="defaultCheck2">
-							Várias vezes por semana
-						</label>
-					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-						<label class="form-check-label" for="defaultCheck2">
-							Semanalmente
-						</label>
-					</div>
-					<div class="form-check option1">
-						<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-						<label class="form-check-label" for="defaultCheck2">
-							Mensalmente 
-						</label>
-					</div>
-					<br>
-                    <button type="button" onclick="nextForm('userField-3')" class="btn btn-primary btn-lg">Continuar</button>
-                </div>
-            </div>
-        </div>
+				</div>
+			</div>
         <script>
             AOS.init();
 			
-			init();
+			/*init();*/
 			
 			function init() {
 				$(document).ready(function(){
 					$(this).scrollTop(0);
 				});
 			}
-			
-			function nextForm(h) {
-				var top = document.getElementById(h).offsetTop;
-				window.scrollTo(0, top);
-			}
-        </script>
+		</script>
+		<script src="./assets/js/form_manager.js"></script>
     </body>
 </html>

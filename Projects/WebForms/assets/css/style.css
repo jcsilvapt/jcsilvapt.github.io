@@ -10,16 +10,19 @@ body {
     background-attachment: fixed;
     background-size: cover;
     color: white;
-	overflow-y: hidden;
+	/*overflow-y: hidden;*/
 }
 
 .option1 {
-	width: 200px;
+	min-width: 200px;
+	max-width: 350px;
 	height: 30px;
 	background-color: rgba(255,255,255,0.2);
     border: solid 1px;
     border-radius: 5px;
 	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .option1:hover {
@@ -27,14 +30,61 @@ body {
 }
 
 .option1 > input {
-	float: left;
+	position: relative;
 	margin-top: 8px;
-	margin-left: -100px;
 }
 
 .option1 > label {
 	margin-top: 1px;
 	float: right;
 	width: 100%;
-	font-size: 90%;
 }
+
+.option2 {
+	margin: 15px;
+}
+
+.option2 > input {
+	width: 100%;
+	background-color: rgba(255,255,255,0);
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	color: white;
+}
+
+.option2 > input:focus {
+	outline: none;
+}
+
+.browserOptions {
+	display: none;
+	width: 100%;
+	float: left;
+}
+
+.browserOptions > .option1 {
+	width: 100%;
+	max-width: none;
+	text-align: left;
+	opacity: 1;
+	animation: fade-in 0.5s linear;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.browserOptions > .option1 > span {
+	margin-left: 15px;
+}
+
+
+@keyframes fade-in {
+  0% { opacity: 0 }
+  50% { opacity: .5}
+  100% { opacity: 1 }
+}
+
+@keyframes fade-out {
+	0% { opacity: 1 }
+	50% { opacity: .5}
+	100% { opacity: 0 }
+  }
