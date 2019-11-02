@@ -21,25 +21,27 @@ function validateForm(currentForm, nextID) {
     } else {
         console.log("ERROR BITCH");
     }
-    
+    console.log(xmlRowString);
 }
 
-function showOptions(value) {
-    if(value) {
-        var r = document.getElementById('opt1').style;
-        r.display = "inline-block";
-        r.animation = "fade-in .5s linear"
-    } else {
-        var r = document.getElementById('opt1').style;
-        r.animation = "fade-out .5s linear"
-        setTimeout(function() {
-            r.display = "none";
-        }, 500);
-        
+function validateList(currentList, nextID) {
+    var c = currentList.parentNode;
+    var value = c.getElementsByTagName("input");
+    var tempText = "";
+    var check = false;
+    for(let i = 0 ; i < value.length-1; i++) {
+        if(value[i].value.length > 0) {
+            tempText += '<q id="' + value[i].name +'">' + value[i].value + "</q>";
+            check = true;
+        }
     }
+    if(check) {
+        xmlRowString += tempText;
+        nextForm(nextID);
+    }
+
 }
 
-function setFocus(value) {
-    var c = value;
-    console.log(c);
+function printData(){
+    console.log(xmlRowString);
 }

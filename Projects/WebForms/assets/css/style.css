@@ -10,7 +10,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     color: white;
-	/*overflow-y: hidden;*/
+	overflow-y: hidden;
 }
 
 .option1 {
@@ -44,26 +44,38 @@ body {
 	margin: 15px;
 }
 
+.fixit {
+	font-size: 28px;
+	margin-bottom: 5px;
+}
+
 .option2 > input {
+	max-width: 280px;
 	width: 100%;
 	background-color: rgba(255,255,255,0);
 	border: none;
 	border-bottom: 1px solid rgba(255,255,255,0.2);
 	color: white;
+	margin-bottom: 25px;
+	margin-top: 25px;
 }
 
 .option2 > input:focus {
 	outline: none;
 }
 
+.option2 > input[placeholder] {
+	text-align: center;
+}
+
 .browserOptions {
 	display: none;
-	width: 100%;
+	width: 315px;
 	float: left;
 }
 
 .browserOptions > .option1 {
-	width: 100%;
+	width: 315px;
 	max-width: none;
 	text-align: left;
 	opacity: 1;

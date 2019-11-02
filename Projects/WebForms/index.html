@@ -10,7 +10,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="assets/css/style.css">
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -101,26 +100,77 @@
 			<div id="userField-4" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
 				<div class="row h-100 justify-content-center align-items-center">
 					<div class="col-10 text-center">
-						<h2>d - Indique, por ordem de preferência, os Web browsers que mais utiliza.<br></h2>
-						<p>Deve indicar 3</p><br>
+						<span class="fixit">d - Indique, por ordem de preferência, os Web browsers que mais utiliza.<br></span>
+						<p>Sendo o 1º o mais preferido e o 3º o menos</p>
 						<form name="internet" method="POST" action="#userField-5" onsubmit="return false">
-							<h3>utilizo todos os dias...</h3>
-							<div class="option2">
-								<input type="text" list="browsers" placeholder="Escreva aqui o browser que mais utiliza" onfocus="showOptions(true)" onfocusout="showOptions(false)"/>
-								<div id="opt1" class="browserOptions">
-									<div class="option1" onclick="setFocus(this)"><span>Chrome</span></div>
-									<div class="option1" onclick="setFocus(this)"><span>Edge</span></div>
+							<div class="row">
+								<div class="col-4">
+									<div class="option2">
+										<input type="text" list="browsers1" name="browsers1" placeholder="1º" required/>
+										<datalist id="browsers1">
+											<option>Chrome</option>
+											<option>Edge</option>
+											<option>FireFox</option>
+											<option>Safari</option>
+										</datalist>
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="option2">
+										<input type="text" list="browsers2" name="browsers2" placeholder="2º"/>
+										<datalist id="browsers2">
+											<option>Chrome</option>
+											<option>Edge</option>
+											<option>FireFox</option>
+											<option>Safari</option>
+										</datalist>
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="option2">
+										<input type="text" list="browsers3" name="browsers3" placeholder="3º"/>
+										<datalist id="browsers3">
+											<option>Chrome</option>
+											<option>Edge</option>
+											<option>FireFox</option>
+											<option>Safari</option>
+										</datalist>
+									</div>
 								</div>
 							</div>
-							<input type="submit" name="gender" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-5')">
+							<input type="submit" name="internet" value="Continuar" class="btn btn-primary btn-lg" onclick="validateList(this, 'userField-5')">
 						</form>
 					</div>
 				</div>
 			</div>
+			<div id="userField-5" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+					<div class="row h-100 justify-content-center align-items-center">
+						<div class="col-10 text-center">
+							<h2>b - Género<br><br></h2>
+							<form name="gender" method="POST" action="#userField-4" onsubmit="return false">
+								<div class="form-check option1">
+									<input class="form-check-input" type="radio" value="male" name="gender" id="gender1" required>
+									<label class="form-check-label" for="gender1">
+										Masculino
+									</label>
+								</div>
+								<div class="form-check option1">
+									<input class="form-check-input" type="radio" value="female" name="gender" id="gender2">
+									<label class="form-check-label" for="gender2">
+										Feminino
+									</label>
+								</div>
+								<br>
+								<input type="submit" name="gender" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-4')">
+							</form>
+						</div>
+					</div>
+				</div>
+			<button type="button" value="TESTE" onclick="printData()">hey</button>
         <script>
             AOS.init();
 			
-			/*init();*/
+			init();
 			
 			function init() {
 				$(document).ready(function(){
