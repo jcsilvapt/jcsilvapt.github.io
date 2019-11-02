@@ -45,3 +45,15 @@ function validateList(currentList, nextID) {
 function printData(){
     console.log(xmlRowString);
 }
+
+function changeDPS(value) {
+    var loc = document.getElementById('dpText');
+    if(value) {
+        loc.disabled = false;
+        loc.placeholder = "Indique aqui!";
+    }else {
+        loc.disabled = true;
+        loc.placeholder = "";
+        loc.value = "";
+    }
+}

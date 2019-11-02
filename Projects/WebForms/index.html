@@ -100,8 +100,8 @@
 			<div id="userField-4" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
 				<div class="row h-100 justify-content-center align-items-center">
 					<div class="col-10 text-center">
-						<span class="fixit">d - Indique, por ordem de preferência, os Web browsers que mais utiliza.<br></span>
-						<p>Sendo o 1º o mais preferido e o 3º o menos</p>
+						<span class="fixit">c - Indique, por ordem de preferência, os Web browsers que mais utiliza.<br></span>
+						<p>Sendo o 1º o mais preferido e o 3º o menos (escolha pêlo menos 1 opção)</p>
 						<form name="internet" method="POST" action="#userField-5" onsubmit="return false">
 							<div class="row">
 								<div class="col-4">
@@ -146,22 +146,14 @@
 			<div id="userField-5" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
 					<div class="row h-100 justify-content-center align-items-center">
 						<div class="col-10 text-center">
-							<h2>b - Género<br><br></h2>
-							<form name="gender" method="POST" action="#userField-4" onsubmit="return false">
-								<div class="form-check option1">
-									<input class="form-check-input" type="radio" value="male" name="gender" id="gender1" required>
-									<label class="form-check-label" for="gender1">
-										Masculino
-									</label>
+							<span class="textTitle">5 - Utiliza outros websites ou aplicações para procurar imagens/fotografias digitais?<br><br></span>
+							<form name="internet-1" method="POST" action="#userField-4" onsubmit="return false">
+								<div class="option3">
+									<input type="radio" name="Outros_Sites" value="nao" onclick="changeDPS(false)" required/> Não
+									<input type="radio" name="Outros_Sites" value="sim" onclick="changeDPS(true)"/> Sim
+									<span><b>Quais?</b></span> <input type="text" id="dpText" name="Outros_Sites_sim" value="" disabled required/>
 								</div>
-								<div class="form-check option1">
-									<input class="form-check-input" type="radio" value="female" name="gender" id="gender2">
-									<label class="form-check-label" for="gender2">
-										Feminino
-									</label>
-								</div>
-								<br>
-								<input type="submit" name="gender" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-4')">
+								<input type="submit" name="internet-1" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-5')">
 							</form>
 						</div>
 					</div>
@@ -170,7 +162,7 @@
         <script>
             AOS.init();
 			
-			init();
+			/*init();*/
 			
 			function init() {
 				$(document).ready(function(){
