@@ -39,7 +39,15 @@ function validateList(currentList, nextID) {
         xmlRowString += tempText;
         nextForm(nextID);
     }
+}
 
+function validateTextArea(textAreaID, nextID){
+    var value = document.getElementById(textAreaID.name).value;
+    if(value.length > 0) {
+        xmlRowString += '<q id="' + textAreaID.name +'">' + value + "</q>";
+    } else {
+        xmlRowString += '<q id="' + textAreaID.name + '"></q>';
+    }
 }
 
 function printData(){

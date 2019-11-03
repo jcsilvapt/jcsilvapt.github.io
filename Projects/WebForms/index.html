@@ -15,17 +15,17 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </head>
     <body>
-        <div id="begin" class="container h-100 animation" data-aos="fade-out">
+        <div id="noInfo-1" class="container h-100 animation" data-aos="fade-out">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 text-center">
                     <h1>Survey bueda louco<br></h1>
                     <p>Por favor não leia isto nem responda, pois nada de especial vai ser feito com estes dados</p>
                     <p>encher com mais...</p>
-                    <button type="button" onclick="nextForm('userField-1')" class="btn btn-primary btn-lg">Começar</button>
+                    <button type="button" onclick="nextForm('noInfo-2')" class="btn btn-primary btn-lg">Começar</button>
                 </div>
             </div>
         </div>
-        <div id="userField-1" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+        <div id="noInfo-2" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 text-center">
                     <h1>Primeiro, vamos conhece-lo :)<br></h1>
@@ -144,20 +144,187 @@
 				</div>
 			</div>
 			<div id="userField-5" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
-					<div class="row h-100 justify-content-center align-items-center">
-						<div class="col-10 text-center">
-							<span class="textTitle">5 - Utiliza outros websites ou aplicações para procurar imagens/fotografias digitais?<br><br></span>
-							<form name="internet-1" method="POST" action="#userField-4" onsubmit="return false">
-								<div class="option3">
-									<input type="radio" name="Outros_Sites" value="nao" onclick="changeDPS(false)" required/> Não
-									<input type="radio" name="Outros_Sites" value="sim" onclick="changeDPS(true)"/> Sim
-									<span><b>Quais?</b></span> <input type="text" id="dpText" name="Outros_Sites_sim" value="" disabled required/>
-								</div>
-								<input type="submit" name="internet-1" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'userField-5')">
-							</form>
-						</div>
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">5 - Utiliza outros websites ou aplicações para procurar imagens/fotografias digitais?<br><br></span>
+						<form name="internet-1" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option3">
+								<input type="radio" name="Outros_Sites" value="nao" onclick="changeDPS(false)" required/> Não
+								<input type="radio" name="Outros_Sites" value="sim" onclick="changeDPS(true)"/> Sim
+								<span><b>Quais?</b></span> <input type="text" id="dpText" name="Outros_Sites_sim" value="" disabled required/>
+							</div>
+							<input type="submit" name="internet-1" value="Continuar" class="btn btn-primary btn-lg" onclick="validateForm(this, 'noInfo-3')">
+						</form>
 					</div>
 				</div>
+			</div>
+			<div id="noInfo-3" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<h1>Tarefas<br></h1>
+						<p>por favor, realize as seguintes tarefas e descreva-nos os resultados obtidos.<br><br></p>
+						<h3>Tarefa 1 - Explorar o website<br></h3>
+						<p>Explore o website livremente durante alguns minutos de modo a ficar mais familiarizado com as funcionalidades do website.
+							Assim que tenha explorado pressione o botão "Continuar"<br><br>
+						</p>
+						<button type="button" onclick="nextForm('userField-6')" class="btn btn-primary btn-lg">Continuar</button>
+					</div>
+				</div>
+			</div>
+			<div id="userField-6" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">7 - Indique se encontrou algum erro ou se sentiu alguma dificuldade em perceber as funcionalidades principais do website.<br><br></span>
+						<form name="qt-7" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								<textarea id="qt-7" name="qt-7" placeholder="Indique aqui as suas dificuldades"></textarea>
+							</div>
+							<input type="submit" name="qt-7" value="Continuar" class="btn btn-primary btn-lg" onclick="validateTextArea(this, 'noInfo-4')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="noInfo-4" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<h3>Tarefa 2 - Pesquisar Imagens<br></h3>
+						<p>Escolha a opção de pesquisa por palavra chave, selecione uma categoria à sua escolha e observe os resultados. Repita a pesquisa com outras categorias.<br><br>
+						</p>
+						<button type="button" onclick="nextForm('userField-7')" class="btn btn-primary btn-lg">Continuar</button>
+					</div>
+				</div>
+			</div>
+			<div id="userField-7" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">8 - Como classifica os resultados obtidos pela pesquisa por categoria (1 significa “Maus” e 5 significa “Excelentes”)? *<br><br></span>
+						<form name="qt-8" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								Maus <input type="range" class="from-control-range" id="range" min="1" max="5"> Excelentes
+							</div>
+							<input type="submit" name="qt-8" value="Continuar" class="btn btn-primary btn-lg" onclick="validateList(this, 'userField-8')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="userField-8" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">9 - Que dificuldades encontrou para realizar a pesquisa e visualizar os resultados?<br><br></span>
+						<form name="qt-7" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								<textarea id="qt-9" name="qt-9" placeholder="Indique aqui as suas dificuldades"></textarea>
+							</div>
+							<input type="submit" name="qt-9" value="Continuar" class="btn btn-primary btn-lg" onclick="validateTextArea(this, 'noInfo-5')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="noInfo-5" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<p>Escolha a opção de <b>pesquisa por cor dominante</b>, selecione uma cor à sua escolha e observe os resultados. Repita a pesquisa com outras cores.<br><br>
+						</p>
+						<button type="button" onclick="nextForm('userField-9')" class="btn btn-primary btn-lg">Continuar</button>
+					</div>
+				</div>
+			</div>
+			<div id="userField-9" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">10 - Como classifica os resultados obtidos pela pesquisa por cor (1 significa “Maus” e 5 significa “Excelentes”)? *<br><br></span>
+						<form name="qt-10" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								Maus <input type="range" class="from-control-range" id="range" min="1" max="5"> Excelentes
+							</div>
+							<input type="submit" name="qt-10" value="Continuar" class="btn btn-primary btn-lg" onclick="validateList(this, 'userField-10')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="userField-10" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">11 - Que dificuldades encontrou para realizar a pesquisa e visualizar os resultados?<br><br></span>
+						<form name="qt-11" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								<textarea id="qt-11" name="qt-11" placeholder="Indique aqui as suas dificuldades"></textarea>
+							</div>
+							<input type="submit" name="qt-11" value="Continuar" class="btn btn-primary btn-lg" onclick="validateTextArea(this, 'noInfo-6')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="noInfo-6" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<p>Escolha a opção de <b>pesquisa por imagem semelhante</b>, selecione uma imagem à sua escolha e observe os resultados..<br><br>
+						</p>
+						<button type="button" onclick="nextForm('userField-11')" class="btn btn-primary btn-lg">Continuar</button>
+					</div>
+				</div>
+			</div>
+			<div id="userField-11" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">12 - Como classifica os resultados obtidos pela pesquisa por imagem semelhante (1 significa “Maus” e 5 significa “Excelentes”)? *<br><br></span>
+						<form name="qt-12" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								Maus <input type="range" class="from-control-range" id="range" min="1" max="5"> Excelentes
+							</div>
+							<input type="submit" name="qt-12" value="Continuar" class="btn btn-primary btn-lg" onclick="validateList(this, 'userField-12')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="userField-12" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">13 - Como classifica a utilidade da pesquisa por Imagens Semelhantes (1 significa “Pouca” e 5 significa “Muita”)? *<br><br></span>
+						<form name="qt-13" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								Maus <input type="range" class="from-control-range" id="range" min="1" max="5"> Excelentes
+							</div>
+							<input type="submit" name="qt-13" value="Continuar" class="btn btn-primary btn-lg" onclick="validateList(this, 'userField-13')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="userField-13" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">14 - Que dificuldades encontrou para realizar a pesquisa e visualizar os resultados?<br><br></span>
+						<form name="qt-14" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								<textarea id="qt-14" name="qt-14" placeholder="Indique aqui as suas dificuldades"></textarea>
+							</div>
+							<input type="submit" name="qt-14" value="Continuar" class="btn btn-primary btn-lg" onclick="validateTextArea(this, 'userField-14')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="userField-14" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<span class="textTitle">15 - Qual o tipo de pesquisa que acha mais adequado?<br><br></span>
+						<form name="qt-15" method="POST" action="#userField-4" onsubmit="return false">
+							<div class="option2">
+								<textarea id="qt-15" name="qt-15" placeholder="Indique aqui as suas dificuldades"></textarea>
+							</div>
+							<input type="submit" name="qt-15" value="Continuar" class="btn btn-primary btn-lg" onclick="validateTextArea(this, 'noInfo-7')">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="noInfo-7" class="container h-100 animation" data-aos="fade" data-aos-duration="1000" data-aos-offset="500">
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-10 text-center">
+						<h1>Avaliação Global</h1>
+						<p>Por favor, responda às seguintes questões para avaliar a sua experiência de utilização e a usabilidade do website.<br><br></p>
+						<button type="button" onclick="nextForm('userField-11')" class="btn btn-primary btn-lg">Continuar</button>
+					</div>
+				</div>
+			</div>
 			<button type="button" value="TESTE" onclick="printData()">hey</button>
         <script>
             AOS.init();
