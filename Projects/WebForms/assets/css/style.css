@@ -118,3 +118,22 @@ textarea {
 	border: 1px solid rgba(255,255,255,0.2);
 	outline: none;
 }
+
+.classificacao {
+	max-width: 50px;
+	min-width: 20px;
+	height: 100%;
+	display: inline-block;
+}
+
+.pad {
+	margin-bottom: 25px;
+}
+
+.divider {
+	width: 50%;
+	height: 1px;
+	background-color: gray;
+	display: inline-block;
+	margin-bottom: 15px;
+}
