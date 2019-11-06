@@ -5,8 +5,43 @@
     <body>
         <h1>Simple camarea display demo</h1>
         <video id="video" width="640" height="480" autoplay style="filter:saturate(13.5)"></video>
-
+        <canvas id="cv" width="400" height="400" style="background-color: rgba(1,1,1,0.1);"></canvas>
         <script>
+
+            let canvas = document.getElementById("cv");
+            let ctx = canvas.getContext("2d");
+
+            ctx.beginPath();
+            ctx.arc(40,40, 30, 0, 2*Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(400-40, 40, 30, 0, 2*Math.PI);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.arc(400-40, 400-40, 30, 0, 2*Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(40, 400-40, 30, 0, 2*Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(400,400);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(400, 0);
+            ctx.lineTo(0, 400);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.ellipse(400/2, 400/2, 150, 50 , Math.PI, 0, 2 * Math.PI);
+            ctx.stroke();
+
+
             window.addEventListener("DOMContentLoaded", WebCameraVideo, false);
             function WebCameraVideo() {
                 let video = document.getElementById("video");
