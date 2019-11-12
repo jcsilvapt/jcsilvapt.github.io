@@ -10,7 +10,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     color: white;
-	/*overflow-y: hidden;*/
+	overflow-y: hidden;
 }
 
 .option1 {
@@ -136,4 +136,8 @@ textarea {
 	background-color: gray;
 	display: inline-block;
 	margin-bottom: 15px;
+}
+
+.contentText {
+	text-align: left;
 }

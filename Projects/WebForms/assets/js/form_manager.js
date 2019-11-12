@@ -2,11 +2,25 @@
 var xmlRowString = "<Questionario>";
 var browserOptions = ["Chrome", "Edge", "Firefox", "Internet Explorer", "Opera", "Safari"];
 
+var currentActive = 0;
+var precentage = 0;
+var dividerTemp = 100.0/26;
 
 // Funçao que altera o visibilidade da form activa
 function nextForm(form) {
     var top = document.getElementById(form).offsetTop;
     window.scrollTo(0, top);
+    if(form.includes("userField")) {
+        currentActive++;
+        updateLevel();
+    }
+}
+
+function updateLevel() {
+    var doc = document.getElementById("counter");
+    precentage += dividerTemp;
+    doc.innerHTML = currentActive+"/26";
+    doc.style.width = precentage+"%";
 }
 
 function validateForm(currentForm, nextID) {
@@ -16,12 +30,7 @@ function validateForm(currentForm, nextID) {
         console.log(xmlRowString);
         xmlRowString += '<q id="' + currentForm.name +'">' +  formValue + "</q>";
         nextForm(nextID);
-    } if (nextID == "end") {
-        xmlRowString += "</Questionario>";
-    } else {
-        console.log("ERROR BITCH");
     }
-    console.log(xmlRowString);
 }
 
 function validateList(currentList, nextID) {
@@ -43,11 +52,13 @@ function validateList(currentList, nextID) {
 
 function validateTextArea(textAreaID, nextID){
     var value = document.getElementById(textAreaID.name).value;
+    console.log(value);
     if(value.length > 0) {
         xmlRowString += '<q id="' + textAreaID.name +'">' + value + "</q>";
     } else {
         xmlRowString += '<q id="' + textAreaID.name + '"></q>';
     }
+    nextForm(nextID);
 }
 
 function printData(){
@@ -64,4 +75,41 @@ function changeDPS(value) {
         loc.placeholder = "";
         loc.value = "";
     }
+}
+
+function validateRandom(currentForm, nextID) {
+    var formName = currentForm.parentNode;
+    var t = formName.getElementsByTagName("form");
+    var temp = "";
+    console.log(formName);
+    console.log(t);
+    for(let i = 0; i < t.length; i++) {
+        var formValue = document.forms[t[i].name][t[i].name].value;
+        console.log(formValue);
+        if(formValue.length > 0) {
+            temp += '<q id="' + t[i].name + '">' + formValue + "</q>";
+        }
+    }
+    xmlRowString += temp;
+    nextForm(nextID);
+}
+
+function validateSUS(currentForm, nextID) {
+    var formName = currentForm.parentNode;
+    var formValue = document.forms[formName.name][formName.name].value;
+    if(formValue.length > 0 ) {
+        xmlRowString += '<q id="' + formName.name + '">' + formValue + "</q>";
+        nextForm(nextID);
+    }
+}
+
+function endForm(nextID) {
+    xmlRowString += "</Questionario>";
+    StoreToLocalStorage();
+    nextForm(nextID);
+}
+
+function StoreToLocalStorage() {
+    let date = new Date();
+    window.localStorage.setItem(date.getTime(), xmlRowString);
 }
