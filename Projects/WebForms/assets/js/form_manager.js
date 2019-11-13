@@ -113,3 +113,53 @@ function StoreToLocalStorage() {
     let date = new Date();
     window.localStorage.setItem(date.getTime(), xmlRowString);
 }
+
+function LoadDataFromLocalStorage() {
+    console.log("I'm probably working");
+    var index = window.localStorage.length;
+    if(index > 0) {
+        var place = document.getElementById("resultPlacer");
+        for(let i = 0; i < index; i++) {
+            var reader = window.localStorage.getItem(window.localStorage.key(i));
+            if(window.DOMParser) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(reader, "application/xml");
+            }
+            var q = doc.getElementsByTagName("q");
+            var card = document.createElement("div");
+            card.classList.add("card");
+            var html = `
+                            <div class="card-header" id="heading{VALUE}">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{ID}" aria-expanded="true" aria-controls="collapse{ID}">
+                                        RESULTADOS: {ID}
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapse{VALUE}" class="collapse show resultsColorFix" aria-labelledby="heading{VALUE}" data-parent="#resultPlacer">
+                                <div class="card-body">
+                                    {DATA}
+                                </div>
+                            </div>`;
+            var inputs = "";
+            for(let b = 0 ; b < q.length; b++) {
+                let id = q[b];
+                inputs += "<p>" + q[b].id + ": " + q[b].textContent + "</p>";
+            }
+            var finalHTML = "";
+            if(i == 0) {
+                finalHTML = html.replace(/{VALUE}|{ID}/g, i+1).replace("{DATA}", inputs);
+            } else {
+                finalHTML = html.replace(/{VALUE}|{ID}/g, i+1).replace("{DATA}", inputs).replace("show", "");
+            }
+            
+            card.innerHTML = finalHTML;
+
+            place.appendChild(card);
+
+        }
+    } else {
+        console.log("NO DATA");
+    }
+}
