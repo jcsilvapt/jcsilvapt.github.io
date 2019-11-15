@@ -1,135 +1,168 @@
-
 var xmlRowString = "<Questionario>";
-var browserOptions = ["Chrome", "Edge", "Firefox", "Internet Explorer", "Opera", "Safari"];
+var browserOptions = [
+  "Chrome",
+  "Edge",
+  "Firefox",
+  "Internet Explorer",
+  "Opera",
+  "Safari"
+];
 
 var currentActive = 0;
 var precentage = 0;
-var dividerTemp = 100.0/26;
+var dividerTemp = 100.0 / 26;
 
 // Funçao que altera o visibilidade da form activa
 function nextForm(form) {
-    var top = document.getElementById(form).offsetTop;
-    window.scrollTo(0, top);
-    if(form.includes("userField")) {
-        currentActive++;
-        updateLevel();
-    }
+  var top = document.getElementById(form).offsetTop;
+  window.scrollTo(0, top);
+  if (form.includes("userField")) {
+    currentActive++;
+    updateLevel();
+  }
+  console.log(xmlRowString);
 }
 
 function updateLevel() {
-    var doc = document.getElementById("counter");
-    precentage += dividerTemp;
-    doc.innerHTML = currentActive+"/26";
-    doc.style.width = precentage+"%";
+  var doc = document.getElementById("counter");
+  precentage += dividerTemp;
+  doc.innerHTML = currentActive + "/26";
+  doc.style.width = precentage + "%";
 }
 
 function validateForm(currentForm, nextID) {
-    var formName = currentForm.parentNode.name;
-    var formValue = document.forms[formName][currentForm.name].value;
-    if(formValue.length > 0) {
-        console.log(xmlRowString);
-        xmlRowString += '<q id="' + currentForm.name +'">' +  formValue + "</q>";
+  var formName = currentForm.parentNode.name;
+  var formValue = document.forms[formName][currentForm.name].value;
+  var newFormValue = "";
+  if (currentForm.name === "Conhece outros sites?") {
+    if (formValue.length > 0) {
+      if (formValue === "sim") {
+        if (document.forms[formName]["Outros_Sites_sim"].value.length > 0) {
+          newFormValue = ", ";
+          newFormValue += document.forms[formName]["Outros_Sites_sim"].value;
+          xmlRowString +=
+            '<q id="' +
+            currentForm.name +
+            '">' +
+            formValue +
+            newFormValue +
+            "</q>";
+          nextForm(nextID);
+        }
+      } else {
+        xmlRowString +=
+          '<q id="' + currentForm.name + '">' + formValue + "</q>";
         nextForm(nextID);
+      }
     }
+  } else {
+    if (formValue.length > 0) {
+      xmlRowString +=
+        '<q id="' + currentForm.name + '">' + formValue + newFormValue + "</q>";
+      nextForm(nextID);
+    }
+  }
 }
 
 function validateList(currentList, nextID) {
-    var c = currentList.parentNode;
-    var value = c.getElementsByTagName("input");
-    var tempText = "";
-    var check = false;
-    for(let i = 0 ; i < value.length-1; i++) {
-        if(value[i].value.length > 0) {
-            tempText += '<q id="' + value[i].name +'">' + value[i].value + "</q>";
-            check = true;
-        }
+  var c = currentList.parentNode;
+  var value = c.getElementsByTagName("input");
+  var tempText = "";
+  var check = false;
+  for (let i = 0; i < value.length - 1; i++) {
+    if (value[i].value.length > 0) {
+      tempText += '<q id="' + value[i].name + '">' + value[i].value + "</q>";
+      check = true;
     }
-    if(check) {
-        xmlRowString += tempText;
-        nextForm(nextID);
-    }
-}
-
-function validateTextArea(textAreaID, nextID){
-    var value = document.getElementById(textAreaID.name).value;
-    console.log(value);
-    if(value.length > 0) {
-        xmlRowString += '<q id="' + textAreaID.name +'">' + value + "</q>";
-    } else {
-        xmlRowString += '<q id="' + textAreaID.name + '"></q>';
-    }
+  }
+  if (check) {
+    xmlRowString += tempText;
     nextForm(nextID);
+  }
 }
 
-function printData(){
-    console.log(xmlRowString);
+function validateTextArea(textAreaID, nextID) {
+  var value = document.getElementById(textAreaID.name).value;
+  console.log(value);
+  if (value.length > 0) {
+    xmlRowString += '<q id="' + textAreaID.name + '">' + value + "</q>";
+  } else {
+    xmlRowString +=
+      '<q id="' + textAreaID.name + '">Sem Comentário/Opinião</q>';
+  }
+  nextForm(nextID);
+}
+
+function printData() {
+  console.log(xmlRowString);
 }
 
 function changeDPS(value) {
-    var loc = document.getElementById('dpText');
-    if(value) {
-        loc.disabled = false;
-        loc.placeholder = "Indique aqui!";
-    }else {
-        loc.disabled = true;
-        loc.placeholder = "";
-        loc.value = "";
-    }
+  var loc = document.getElementById("dpText");
+  if (value) {
+    loc.disabled = false;
+    loc.placeholder = "Indique aqui!";
+    loc.required = true;
+  } else {
+    loc.disabled = true;
+    loc.placeholder = "";
+    loc.value = "";
+  }
 }
 
 function validateRandom(currentForm, nextID) {
-    var formName = currentForm.parentNode;
-    var t = formName.getElementsByTagName("form");
-    var temp = "";
-    console.log(formName);
-    console.log(t);
-    for(let i = 0; i < t.length; i++) {
-        var formValue = document.forms[t[i].name][t[i].name].value;
-        console.log(formValue);
-        if(formValue.length > 0) {
-            temp += '<q id="' + t[i].name + '">' + formValue + "</q>";
-        }
+  var formName = currentForm.parentNode;
+  var t = formName.getElementsByTagName("form");
+  var temp = "";
+  console.log(formName);
+  console.log(t);
+  for (let i = 0; i < t.length; i++) {
+    var formValue = document.forms[t[i].name][t[i].name].value;
+    console.log(formValue);
+    if (formValue.length > 0) {
+      temp += '<q id="' + t[i].name + '">' + formValue + "</q>";
     }
-    xmlRowString += temp;
-    nextForm(nextID);
+  }
+  xmlRowString += temp;
+  nextForm(nextID);
 }
 
 function validateSUS(currentForm, nextID) {
-    var formName = currentForm.parentNode;
-    var formValue = document.forms[formName.name][formName.name].value;
-    if(formValue.length > 0 ) {
-        xmlRowString += '<q id="' + formName.name + '">' + formValue + "</q>";
-        nextForm(nextID);
-    }
+  var formName = currentForm.parentNode;
+  var formValue = document.forms[formName.name][formName.name].value;
+  if (formValue.length > 0) {
+    xmlRowString += '<q id="' + formName.name + '">' + formValue + "</q>";
+    nextForm(nextID);
+  }
 }
 
 function endForm(nextID) {
-    xmlRowString += "</Questionario>";
-    StoreToLocalStorage();
-    nextForm(nextID);
+  xmlRowString += "</Questionario>";
+  StoreToLocalStorage();
+  nextForm(nextID);
 }
 
 function StoreToLocalStorage() {
-    let date = new Date();
-    window.localStorage.setItem(date.getTime(), xmlRowString);
+  let date = new Date();
+  window.localStorage.setItem(date.getTime(), xmlRowString);
 }
 
 function LoadDataFromLocalStorage() {
-    console.log("I'm probably working");
-    var index = window.localStorage.length;
-    if(index > 0) {
-        var place = document.getElementById("resultPlacer");
-        for(let i = 0; i < index; i++) {
-            var reader = window.localStorage.getItem(window.localStorage.key(i));
-            if(window.DOMParser) {
-                var parser = new DOMParser();
-                var doc = parser.parseFromString(reader, "application/xml");
-            }
-            var q = doc.getElementsByTagName("q");
-            var card = document.createElement("div");
-            card.classList.add("card");
-            var html = `
-                            <div class="card-header" id="heading{VALUE}">
+  console.log("I'm probably working");
+  var index = window.localStorage.length;
+  if (index > 0) {
+    var place = document.getElementById("resultPlacer");
+    for (let i = 0; i < index; i++) {
+      var reader = window.localStorage.getItem(window.localStorage.key(i));
+      if (window.DOMParser) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(reader, "application/xml");
+      }
+      var q = doc.getElementsByTagName("q");
+      var card = document.createElement("div");
+      card.classList.add("card");
+      var html = `
+                            <div class="card-header newColor" id="heading{VALUE}">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{ID}" aria-expanded="true" aria-controls="collapse{ID}">
                                         RESULTADOS: {ID}
@@ -142,24 +175,33 @@ function LoadDataFromLocalStorage() {
                                     {DATA}
                                 </div>
                             </div>`;
-            var inputs = "";
-            for(let b = 0 ; b < q.length; b++) {
-                let id = q[b];
-                inputs += "<p>" + q[b].id + ": " + q[b].textContent + "</p>";
-            }
-            var finalHTML = "";
-            if(i == 0) {
-                finalHTML = html.replace(/{VALUE}|{ID}/g, i+1).replace("{DATA}", inputs);
-            } else {
-                finalHTML = html.replace(/{VALUE}|{ID}/g, i+1).replace("{DATA}", inputs).replace("show", "");
-            }
-            
-            card.innerHTML = finalHTML;
+      var inputs = "";
+      for (let b = 0; b < q.length; b++) {
+        let id = q[b];
+        inputs +=
+          "<p class='textTitle'>" +
+          q[b].id +
+          ": <p>User Input: " +
+          q[b].textContent +
+          "</p></p>";
+      }
+      var finalHTML = "";
+      if (i == 0) {
+        finalHTML = html
+          .replace(/{VALUE}|{ID}/g, i + 1)
+          .replace("{DATA}", inputs);
+      } else {
+        finalHTML = html
+          .replace(/{VALUE}|{ID}/g, i + 1)
+          .replace("{DATA}", inputs)
+          .replace("show", "");
+      }
 
-            place.appendChild(card);
+      card.innerHTML = finalHTML;
 
-        }
-    } else {
-        console.log("NO DATA");
+      place.appendChild(card);
     }
+  } else {
+    console.log("NO DATA");
+  }
 }
