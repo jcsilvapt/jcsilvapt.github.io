@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 
-class FotoPrint
-{
+class FotoPrint {
     constructor() {
         this.thingInMotion = null;
         this.offsetx = null;
@@ -10,7 +9,7 @@ class FotoPrint
     }
 
     init() {
-/*        let r = new Rect(100, 100, 20, 20, "red");
+        /*        let r = new Rect(100, 100, 20, 20, "red");
         this.shpinDrawing.insert(r);
         let o = new Oval(150, 150, 50, 1, 1, "blue");
         this.shpinDrawing.insert(o);
@@ -38,7 +37,7 @@ class FotoPrint
     }
 
     dragObj(mx, my) {
-        let endpt = this.shpinDrawing.stuff.length-1;
+        let endpt = this.shpinDrawing.stuff.length - 1;
 
         for (let i = endpt; i >= 0; i--) {
             if (this.shpinDrawing.stuff[i].mouseOver(mx, my)) {
@@ -59,16 +58,16 @@ class FotoPrint
         this.shpinDrawing.stuff[this.thingInMotion].posy = my - this.offsety;
     }
 
-    removeObj () {
+    removeObj() {
         this.shpinDrawing.remove();
     }
 
-    insertObj (mx, my) {
+    insertObj(mx, my) {
         let item = null;
-        let endpt = this.shpinDrawing.stuff.length-1;
+        let endpt = this.shpinDrawing.stuff.length - 1;
 
         for (let i = endpt; i >= 0; i--) {
-            if (this.shpinDrawing.stuff[i].mouseOver(mx,my)) {
+            if (this.shpinDrawing.stuff[i].mouseOver(mx, my)) {
                 item = this.cloneObj(this.shpinDrawing.stuff[i]);
                 this.shpinDrawing.insert(item);
                 return true;
@@ -77,10 +76,10 @@ class FotoPrint
         return false;
     }
 
-    cloneObj (obj) {
+    cloneObj(obj) {
         let item = {};
 
-        switch(obj.name) {
+        switch (obj.name) {
             case "R":
                 item = new Rect(obj.posx + 20, obj.posy + 20, obj.w, obj.h, obj.color);
                 break;
@@ -105,7 +104,11 @@ class FotoPrint
             case "T":
                 item = new insertText(obj.posx + 20, obj.posy + 20, obj.textSize, obj.color, obj.textValue);
                 break;
-            default: throw new TypeError("Can not clone this type of object");
+            case "S":
+                item = new Smile(obj.posx + 20, obj.posy + 20, obj.textSize, obj.color, obj.textValue);
+                break;
+            default:
+                throw new TypeError("Can not clone this type of object");
         }
         return item;
     }
@@ -115,16 +118,13 @@ class FotoPrint
     }
 }
 
-
-class Pool
-{
-    constructor (maxSize) {
+class Pool {
+    constructor(maxSize) {
         this.size = maxSize;
         this.stuff = [];
-
     }
 
-    insert (obj) {
+    insert(obj) {
         if (this.stuff.length < this.size) {
             this.stuff.push(obj);
         } else {
@@ -132,11 +132,11 @@ class Pool
         }
     }
 
-    remove () {
+    remove() {
         if (this.stuff.length !== 0) {
             this.stuff.pop();
         } else {
-           alert("There aren't objects in the application to delete");
+            alert("There aren't objects in the application to delete");
         }
     }
 }
