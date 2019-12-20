@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Family Photos</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/styling.css" />
+        <script src="js/FotoPrint_manager.js"></script>
+        <script src="js/FotoPrint.js"></script>
+        <script src="js/DrawingObjects.js"></script>
+        <script src="js/myScript.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="logoHoldeR">
+                <img src="imgs/logo.jpg" />
+            </div>
+            <div class="menuHolder">
+                <ul>
+                    <li>
+                        <input type="text" id="textinput" class="cenas" placeholder="Inserir Texto..." onmouseover="extText(this)" onmouseout="shrinkTxt(this)" style="float: left;" />
+                        <button onclick="writeText()" id="txtbtnSub" class="textSubmit">
+                            Inserir
+                        </button>
+                    </li>
+                    <li>
+                        <input type="file" name="foto" id="browseImg" onchange="insertImage()" accept="image/png, image/jpeg" />
+                    </li>
+                    <li>
+                        <input type="color" style="width: 144px;" id="colorPicker" />
+                        Escolhe uma Cor...
+                    </li>
+                    <li>
+                        <button onclick="changeBackgroundColor()">
+                            mudar cor de fundo
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="remove()">remover item</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="imagePosition">
+                <canvas id="secretCanvas" width="100" height="100" style="display: none;"></canvas>
+                <div class="imgToInsert" id="tryout"></div>
+            </div>
+        </header>
+        <section>
+            <canvas id="canvas">
+                Your browser doesn't recognize the canvas element
+            </canvas>
+        </section>
+        <section style="text-align: center;">
+            <button onclick="saveasimage()" value="teste" style="margin-left: auto; margin-right: auto;">
+                Gravar Imagem
+            </button>
+        </section>
+        <section>
+            <script>
+                window.onload = main();
+            </script>
+        </section>
+    </body>
+</html>
