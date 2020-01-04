@@ -1,0 +1,76 @@
+.circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin: auto;
+    border-radius: 25px;
+    border: 0px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.circle:hover {
+    border: 5px solid rgba(0,0,0, 0.5);
+}
+
+.red {
+    background-color: red;
+}
+.orange {
+    background-color: orange;
+}
+.yellow {
+    background-color: yellow;
+}
+.green {
+    background-color: green;
+}
+.blue-green {
+    background-color: #1abc9c;
+}
+.blue {
+    background-color: blue;
+}
+.purple {
+    background-color: purple;
+}
+.pink {
+    background-color: pink;
+}
+.white {
+    background-color: white;
+}
+.grey {
+    background-color: grey;
+}
+.black {
+    background-color: black;
+}
+.brown {
+    background-color: brown;
+}
+
+.noColor {
+        color: red;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin: auto;
+    border-radius: 25px;
+    transition: 0.5s;
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+.noColor:hover {
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.noColor:before {
+    content: "/";
+    float: left;
+    margin-left: 5px;
+    margin-top: -8px;
+    font-size: 21px;
+}

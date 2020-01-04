@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 class ISearchEngine {
-    constructor(dbase) {
-        //Pool to include all the objects (mainly pictures) drawn in canvas 
+    constructor(dbase, loadStorage) {
+        //Pool to include all the objects (mainly pictures) drawn in canvas
         this.allpictures = new Pool(3000);
 
         //Array of color to be used in image processing algorithms
@@ -18,17 +18,17 @@ class ISearchEngine {
         //List of categories available in the image database
         this.categories = ["beach", "birthday", "face", "indoor", "manmade/artificial", "manmade/manmade", "manmade/urban", "marriage", "nature", "no_people", "outdoor", "party", "people", "snow"];
 
-        //Name of the XML file with the information related to the images 
+        //Name of the XML file with the information related to the images
         this.XML_file = dbase;
 
-        // Instance of the XML_Database class to manage the information in the XML file 
+        // Instance of the XML_Database class to manage the information in the XML file
         this.XML_db = new XML_Database();
 
-        // Instance of the LocalStorageXML class to manage the information in the LocalStorage 
+        // Instance of the LocalStorageXML class to manage the information in the LocalStorage
         this.LS_db = new LocalStorageXML();
 
         //Number of images per category for image processing
-        this.num_Images = 1;
+        this.num_Images = 100; // default 100
         //Number of images to show in canvas as a search result
         this.numshownpic = 35;
 
@@ -36,12 +36,15 @@ class ISearchEngine {
         this.imgWidth = 190;
         //Height of image in canvas
         this.imgHeight = 140;
+
+        //New variable to check if needs to load LocalStorage
+        this.loadStorage = loadStorage;
     }
 
     //Method to initialize the canvas. First stage it is used to process all the images
     init(cnv) {
-        this.databaseProcessing(cnv);
-
+        if(this.loadStorage)
+            this.databaseProcessing(cnv);
     }
 
     // method to build the database which is composed by all the pictures organized by the XML_Database file
@@ -52,17 +55,28 @@ class ISearchEngine {
         let h12color = new ColorHistogram(this.redColor, this.greenColor, this.blueColor);
         let colmoments = new ColorMoments();
 
-        let img = new Picture(0, 0, 100, 100, "Images/daniel1.jpg", "test");
+        for (let i = 0; i < this.categories.length; i++) {
+            let imgPath = this.XML_db.SearchXML(this.categories[i], this.XML_db.loadXMLfile(this.XML_file), 300);
 
-        //Creating an event that will be used to understand when image is already processed
-        let eventname = "processed_picture_" + img.impath;
-        let eventP = new Event(eventname);
-        let self = this;
-        document.addEventListener(eventname, function() {
-            //self.imageProcessed(img, eventname);
-        }, false);
+            for (let c = 0; c < imgPath.length; c++) {
+                let image = new Picture(0, 0, this.imgWidth, this.imgHeight, imgPath[c], this.categories[i]);
 
-        img.computation(cnv, h12color, colmoments, eventP);
+                let eventName = "processed_picture_" + image.impath;
+                let eventP = new Event(eventName);
+                let self = this;
+                document.addEventListener(eventName, function () {
+                    self.imageProcessed(image, eventName);
+                }, false);
+                image.computation(cnv, h12color, colmoments, eventP);
+                this.clearCanvas(cnv);
+            }
+        }
+    }
+
+    clearCanvas(cnv) {
+        let ctx = cnv.getContext("2d");
+        console.log(cnv.width + " " + cnv.height);
+        ctx.clearRect(0, 0, cnv.width, cnv.height);
     }
 
     //When the event "processed_picture_" is enabled this method is called to check if all the images are
@@ -70,18 +84,38 @@ class ISearchEngine {
     //to answer the queries related to Color and Image Example
     imageProcessed(img, eventname) {
         this.allpictures.insert(img);
-        console.log("image processed " + this.allpictures.stuff.length + eventname);
-        if (this.allpictures.stuff.length === (this.num_Images * this.categories.length)) {
-            //this.createXMLColordatabaseLS();
-            //this.createXMLIExampledatabaseLS();
+        console.log("image processed: " + this.allpictures.stuff.length + " " + eventname);
+        if (this.allpictures.stuff.length === this.num_Images * this.categories.length) {
+            this.createXMLColordatabaseLS();
+            this.createXMLIExampledatabaseLS();
         }
     }
 
     //Method to create the XML database in the localStorage for color queries
     createXMLColordatabaseLS() {
+        let imagesByCategory = [[], [], [], [], [], [], [], [], [], [], [], [], [], []];
+        let xmlRow = "";
 
-        // this method should be completed by the students
-
+        for (let i = 0; i < this.allpictures.stuff.length; i++) {
+            for (let z = 0; z < this.categories.length; z++) {
+                if (this.allpictures.stuff[i].category === this.categories[z]) {
+                    imagesByCategory[z].push(this.allpictures.stuff[i]);
+                }
+            }
+        }
+        let limit = 50000;
+        for(let i = 0; i < imagesByCategory.length; i++) {
+            xmlRow = "<category id='" + this.categories[i] + "'>";
+            for(let c = 0; c < imagesByCategory[i].length; c++) {
+                for(let z = 0; z < this.colors.length; z++) {
+                    if(imagesByCategory[i][c].hist[z] >= limit) {
+                        xmlRow += "<img class='" + this.colors[z] + "' src='" + imagesByCategory[i][c].impath + "'/>";
+                    }
+                }
+            }
+            xmlRow += "</category>";
+            this.LS_db.saveLS_XML(i, xmlRow);
+        }
     }
 
     //Method to create the XML database in the localStorage for Image Example queries
@@ -89,9 +123,7 @@ class ISearchEngine {
         let list_images = new Pool(this.allpictures.stuff.length);
         this.zscoreNormalization();
 
-
         // this method should be completed by the students
-
     }
 
     //A good normalization of the data is very important to look for similar images. This method applies the
@@ -121,7 +153,7 @@ class ISearchEngine {
         // STD computation I
         for (let i = 0; i < this.allpictures.stuff.length; i++) {
             for (let j = 0; j < this.allpictures.stuff[0].color_moments.length; j++) {
-                overall_std[j] += Math.pow((this.allpictures.stuff[i].color_moments[j] - overall_mean[j]), 2);
+                overall_std[j] += Math.pow(this.allpictures.stuff[i].color_moments[j] - overall_mean[j], 2);
             }
         }
 
@@ -140,23 +172,39 @@ class ISearchEngine {
 
     //Method to search images based on a selected color
     searchColor(category, color) {
-
-        // this method should be completed by the students
-
+        let idxValue = -1;
+        for(let i = 0; i < this.categories.length; i++) {
+            if(this.categories[i] === category) {
+                idxValue = i;
+                break;
+            }
+        }
+        let results = this.LS_db.readLS_XML(idxValue);
+        let val = results.documentElement.querySelectorAll("img."+color);
+        if(val.length > 0) {
+            return val;
+        }else {
+            return this.searchKeywords(category);
+        }
     }
 
     //Method to search images based on keywords
     searchKeywords(category) {
-
-        // this method should be completed by the students
-
+        let idxValue = -1;
+        for(let i = 0; i < this.categories.length; i++) {
+            if(this.categories[i] === category) {
+                idxValue = i;
+                break;
+            }
+        }
+        let results = this.LS_db.readLS_XML(idxValue);
+        let val = results.documentElement.querySelectorAll("img");
+        return val
     }
 
     //Method to search images based on Image similarities
     searchISimilarity(IExample, dist) {
-
         // this method should be completed by the students
-
     }
 
     //Method to compute the Manhattan difference between 2 images which is one way of measure the similarity
@@ -173,32 +221,60 @@ class ISearchEngine {
 
     //Method to sort images according to the Manhattan distance measure
     sortbyManhattanDist(idxdist, list) {
-
         // this method should be completed by the students
     }
 
     //Method to sort images according to the number of pixels of a selected color
     sortbyColor(idxColor, list) {
-        list.sort(function(a, b) {
+        list.sort(function (a, b) {
             return b.hist[idxColor] - a.hist[idxColor];
         });
     }
 
     //Method to visualize images in canvas organized in columns and rows
     gridView(canvas) {
-
         // this method should be completed by the students
-
     }
 
-}
+    // Mêtodos extras
+    /**
+     * Receber uma cor e converte o valor em código hexadecimal
+     * @param {string} color
+     */
+    convertToHEX(color) {
+        var index = -1;
+        //Checks array positions
+        for (var i = 0; i < this.colors.length; i++) {
+            if (color === this.colors[i]) {
+                index = i;
+                break;
+            }
+        }
 
+        if (index !== -1) return this.RGBToHEX(this.redColor[index], this.greenColor[index], this.blueColor[index]);
+    }
+
+    /**
+     * Receber uma cor e converte o valor em código RGB
+     * @param {string} color
+     */
+    convertToRGB(color) {
+        var index = -1;
+        //Checks array positions
+        for (var i = 0; i < this.colors.length; i++) {
+            if (color === this.colors[i]) {
+                index = i;
+                break;
+            }
+        }
+        if (index !== -1) return [this.redColor[index], this.greenColor[index], this.blueColor[index]];
+    }
+}
 
 class Pool {
     constructor(maxSize) {
         this.size = maxSize;
         this.stuff = [];
-
     }
 
     insert(obj) {

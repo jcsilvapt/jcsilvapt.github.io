@@ -55,6 +55,7 @@ class Picture {
             this.imgobj.addEventListener('load', function () {
                 ctx.drawImage(self.imgobj, 0, 0, self.imgobj.width, self.imgobj.height);
                 let pixels =  ctx.getImageData(0, 0, self.imgobj.width, self.imgobj.height);
+                console.log(pixels);
                 //let pixels = Generate_Image(cnv);
                 self.hist = histcol.count_Pixels(pixels);
                 //self.build_Color_Rect(cnv, self.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
@@ -108,14 +109,44 @@ class ColorHistogram {
         this.redColor = redColor;
         this.greenColor = greenColor;
         this.blueColor = blueColor;
-        // this method should be completed by the students
+        this.numOfColors = 12;
+        this.limiar1 = 72;
+        this.limiar2 = 165;
 
     }
 
     count_Pixels (pixels) {
+        let pRed, pGreen, pBlue = null;
+        let deltaRed, deltaGreen, deltaBlue = null;
+        let manhattanDist = null;
+        let histogramIndex = null;
+        let lessDeltaTotal = 766;
+        let histogram = Array(this.numOfColors).fill(0);
 
-        // this method should be completed by the students
+        // precorrer os pixeis da imagem
+        for(let i = 0; i < pixels.data.length; i+=4) {
+            pRed    = pixels.data[i];
+            pGreen  = pixels.data[i + 1];
+            pBlue   = pixels.data[i + 2];
+            histogramIndex = null;
+            lessDeltaTotal = 766;
+            for(let z = 0; z < this.numOfColors; ++z) {
+                deltaRed    = Math.abs(pRed - this.redColor[z]);
+                deltaGreen  = Math.abs(pGreen - this.greenColor[z]);
+                deltaBlue   = Math.abs(pBlue - this.blueColor[z]);
+                manhattanDist  = deltaRed + deltaGreen + deltaBlue;
+                if((deltaRed < this.limiar1) && (deltaGreen < this.limiar1) && (deltaBlue < this.limiar1) && (manhattanDist < this.limiar2) && (manhattanDist < lessDeltaTotal)) {
+                    histogramIndex = z;
+                    lessDeltaTotal = manhattanDist;
+                }
+            }
+            if(histogramIndex != null) {
+                histogram[histogramIndex] += 1;
+            }
 
+        }
+        console.log(histogram);
+        return histogram;
     }
 }
 
