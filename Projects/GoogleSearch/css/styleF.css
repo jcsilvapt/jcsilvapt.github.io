@@ -68,10 +68,6 @@ html, body {
     opacity: 1;
 }
 
-.alert {
-    top: 15px;
-}
-
 .resultsHolder {
     background-color: rgba(0,4,14,0.75);
     border-radius: 15px;
@@ -117,11 +113,13 @@ img {
 .alert {
     position: absolute;
     width:60%;
-    top: -55px;
+    top: -100px;
+    opacity: 0;
     transition: 0.5s;
 }
 
 .alertTrigger {
+    opacity: 1;
     top: 55px;
 }
 
