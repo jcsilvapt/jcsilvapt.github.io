@@ -90,7 +90,7 @@ function clearContent() {
  */
 
 function getSearchValue() {
-    let value = document.getElementById("searchValue").value;
+    let value = document.getElementById("searchValue").value.trim();
     if (value.length > 0) {
         return value;
     } else {
