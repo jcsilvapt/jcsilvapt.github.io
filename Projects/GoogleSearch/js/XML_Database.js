@@ -9,7 +9,7 @@ class XML_Database {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("POST", filename, false);
+        xmlhttp.open("GET", filename, false);
         xmlhttp.send();
         xmlDoc = xmlhttp.responseXML;
         return xmlDoc;
