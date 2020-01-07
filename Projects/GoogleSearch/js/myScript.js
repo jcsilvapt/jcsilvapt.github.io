@@ -1,7 +1,7 @@
 var currentValueSearch = "Imagens";
 var searchPlace = document.getElementById("searchValue");
 var showingOptions = false;
-
+var category = null;
 /**
  * Evento do teclado, caso seja a tecla enter, inicia a procura na base de dados.
  */
@@ -14,6 +14,7 @@ searchPlace.addEventListener("keyup", function (event) {
         document.getElementById("searchValue").value = "";
         resetSearch();
         hasSearch(false);
+        randomWord(category);
         if(getShowOptions())
             showOptions();
     }
@@ -183,4 +184,21 @@ function autocomplete(inp, arr) {
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });
+}
+
+/**
+ * Função que receber um array e da random na frase de procura
+ * @param {array} categories
+ */
+function randomWord(categories) {
+    category = categories;
+    let idx = Math.floor(Math.random() * categories.length);
+    document.getElementById("searchValue").placeholder = "Search Images... try writing '" + categories[idx] +"'";
+}
+
+/**
+ * Função para abrir pop-up de FileSearch
+ */
+function openFileSearch() {
+    document.getElementById("fileInput").click();
 }

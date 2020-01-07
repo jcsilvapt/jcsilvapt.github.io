@@ -158,3 +158,16 @@ img {
     background-color: dodgerblue !important;
     color: black;
 }
+
+.textColor {
+    color: dodgerblue;
+}
+
+.icon {
+    color: gray;
+    transition: 0.2s;
+}
+
+.icon:hover {
+    color:white;
+}

@@ -26,23 +26,21 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">WARNING</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title textColor">READ ME</h5>
+                <span><strong><i>This project doesn't work on mobile devices</i></strong></span>
             </div>
             <div class="modal-body">
                 <h5>Information</h5>
                 <p>Welcome, I'm sorry about this "bump" but it's required so you can enjoy this on its fullest, please
                     take a close look at the following steps.</p>
-                <strong>IMPORTANT NOTE: This project doesn't run on Mobile... sorry about that :(</strong>
+                <p>:)</p>
                 <p><strong>Last Update: </strong>04/01/2020</p>
                 <hr>
                 <h5>First Run</h5>
                 <p>So this project uses <strong>LocalStorage</strong> as a way to simulate a database. So in order
                     to work I kindly ask you to press the <strong>Load</strong> button.</p>
                 <p>Don't worry, the site may appear to be blocked, but you can see it working if you press
-                    <strong>F12</strong>.</p>
+                    <strong>F12</strong> and change the tab to 'Console'.</p>
                 <hr>
                 <h5>Usual Run / Update</h5>
                 <p>Seems your not a newcomer, so just press the <strong>Close</strong> button and have fun or use <strong>Load</strong> if you want to refresh the database.</p>
@@ -104,16 +102,17 @@
     <div class="content">
         <div class="input-group mb-3 shadow-lg">
             <div class="input-group-prepend">
-                <span class="btn btn-secondary" onclick="showOptions()"><i id="searchIcon"
-                                                                           class="fa fa-angle-double-down"></i></span>
+                <span class="btn btn-secondary" onclick="showOptions()"><i id="searchIcon" class="fa fa-angle-double-down"></i></span>
             </div>
-            <input type="search" id="searchValue" class="form-control" aria-label="Default"
-                   placeholder="Procurar Imagens..."/>
+            <input type="search" id="searchValue" class="form-control" aria-label="Default" placeholder="Search Images"/>
             <div class="input-group-append">
-                <button class="btn btn-secondary" onclick="normalSearch()" type="button">Procurar</button>
+                <input type="file" id="fileInput" style="display: none" onchange="readFile(this)" accept="image/*"/>
+                <button class="btn btn-dark" onclick="openFileSearch()" type="button" data-toggle="tooltip" data-placment="top" title="Find equal images"><i class="far fa-images icon"></i></button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" onclick="normalSearch()" type="button">Search</button>
             </div>
         </div>
-        <canvas id="dropCanvas" class="dropCanvas" ondrop="" ondragover="" style="display: none;"></canvas>
         <div id="sOptions" class="moreOption shadow">
             <span>Escolha uma Cor:</span>
             <div class="container align-items-center">
@@ -143,7 +142,7 @@
 </div>
 
 <!-- /Display Results -->
-<canvas id="hidden" width="2000" height="2000" style="display: none"></canvas>
+<canvas id="hidden" width="2000" height="2000" style="display: block"></canvas>
 <!-- Optional JavaScript -->
 <script src="js/Image_Processing.js"></script>
 <script src="js/XML_Database.js"></script>
@@ -165,13 +164,15 @@
     var categories = ["beach", "birthday", "face", "indoor", "manmade/artificial", "manmade/manmade", "manmade/urban", "marriage", "nature", "no_people", "outdoor", "party", "people", "snow"];
 
 
-    window.onload = showInfo();
+    //window.onload = showInfo(); // Fully Working
+    window.onload = setupLS(true); // Teste Related
 
     function showInfo() {
         $('#modalInfo').modal({
             backdrop: 'static',
             keyboard: false
-        })
+        });
+        randomWord(categories);
     }
 
     function setupLS(value) {
@@ -181,6 +182,9 @@
             main(false);
         }
     }
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
     autocomplete(document.getElementById("searchValue"), categories);
 </script>

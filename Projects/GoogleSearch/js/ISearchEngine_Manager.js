@@ -7,14 +7,13 @@ var errorList = {
     category: "Atenção: Não sei por onde deva começar... tenta escrever qualquer coisa!",
     noWord: "Erro: Não tenho essa palava na minha base de dados, tenta usar outra!"
 };
+var canvas = document.getElementById("hidden");
 
 /**
  *
  * @param {boolean} bool Value that determines if there's need to load LocalStorage or not
  */
 function main(bool) {
-    let canvas = document.getElementById("hidden");
-
     //Creating the instance of the application
     app = new ISearchEngine("xml/Image_database.xml", bool);
 
@@ -101,18 +100,20 @@ function getSearchValue() {
 
 /**
  * Função que recebe um array com imagens e mostra-as na "tela"
- * @param values
+ * @param {array} values    Valores de Entrada
+ * @param {boolean} type    True - Procura Por LocalStorage, False - Procura Por XML
  */
-function displayResults(values) {
+function displayResults(values, type) {
     let toPlace = document.getElementById("results");
     let showedIdx = [];
     let controlImagesShown = (values.length < numshownpic) ? values.length : numshownpic;
+
     for (let i = 0; i < controlImagesShown; i++) {
         let unique = true;
         let idxRandom = -1;
         while (unique) {
             idxRandom = Math.floor(Math.random() * values.length);
-            let controlSrc = values[idxRandom].getAttribute("src");
+            let controlSrc = (type === true) ? values[idxRandom].getAttribute("src") : values[idxRandom];
             let control = true;
             for (let c = 0; c < showedIdx.length; c++) {
                 if (controlSrc === showedIdx[c]) {
@@ -131,12 +132,11 @@ function displayResults(values) {
         rDiv.classList.add("result");
         rDiv.classList.add("shadow");
         let image = document.createElement("img");
-        image.src = values[idxRandom].getAttribute("src");
+        image.src = (type === true) ? values[idxRandom].getAttribute("src") : values[idxRandom];
         image.id = "img" + idxRandom;
         rDiv.appendChild(image);
         toPlace.appendChild(rDiv);
     }
-    console.log(showedIdx);
 }
 
 /**
@@ -148,7 +148,7 @@ function normalSearch() {
         let images = app.searchKeywords(searchValue);
         if (images.length > 0) {
             hasSearch(true);
-            displayResults(images);
+            displayResults(images, false);
         } else {
             triggerAlert(errorList.noWord);
         }
@@ -157,14 +157,21 @@ function normalSearch() {
     }
 }
 
+/**
+ * Função para procurar imagens pela mesma cor
+ */
 function colorSearch() {
     let searchValue = getSearchValue();
     if (searchValue !== false) {
         let images = app.searchColor(searchValue, selectedColor);
-        if(images.length > 0) {
+        if (images.length > 0) {
             hasSearch(true);
-            displayResults(images);
-        }else {
+            if(images.length >= 99) {
+                displayResults(images, false);
+            }else {
+                displayResults(images, true);
+            }
+        } else {
             triggerAlert(errorList.noWord);
         }
     } else {
@@ -172,6 +179,10 @@ function colorSearch() {
     }
 }
 
+/**
+ * Função que procura por cor
+ * @param value
+ */
 function setColorSearch(value) {
     selectedColor = value;
     if (selectedColor !== "none") {
@@ -181,6 +192,9 @@ function setColorSearch(value) {
     }
 }
 
+/**
+ * Função de reset
+ */
 function resetSearch() {
     selectedColor = "none";
 }
@@ -197,4 +211,20 @@ function triggerAlert(text) {
     setTimeout(function () {
         place.classList.remove("alertTrigger");
     }, 4000);
+}
+
+/**
+ * Função que recebe uma imagem e prepara a imagem
+ * @param image
+ */
+function readFile(image) {
+    let imageType = /image.*/;
+    let file = image.files[0];
+    if (!file.type.match(imageType)) {
+        throw "File type must be an image";
+    } else {
+        app.insertImage(canvas, file);
+    }
+
+
 }
