@@ -171,3 +171,19 @@ img {
 .icon:hover {
     color:white;
 }
+
+.crop {
+    height: 220px;
+    min-width: 200px;
+    width: 25%;
+    overflow: hidden;
+    display: inline-block;
+    padding: 15px;
+}
+
+.crop img {
+    height: auto;
+    width: 430px;
+    margin-bottom: 50px;
+    object-fit:scale-down;
+}

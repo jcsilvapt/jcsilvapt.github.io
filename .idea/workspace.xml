@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
     <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
@@ -22,6 +29,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -86,7 +94,8 @@
       <workItem from="1578417174870" duration="21631000" />
       <workItem from="1578509248427" duration="9367000" />
       <workItem from="1578529066016" duration="87000" />
-      <workItem from="1578529245974" duration="655000" />
+      <workItem from="1578529245974" duration="1126000" />
+      <workItem from="1578606849081" duration="6443000" />
     </task>
     <servers />
   </component>
@@ -132,9 +141,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="657" y="123" width="606" height="804" key="find.popup/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1577981093217" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578419933859">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578610256065">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1578419933859" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1578610256065" />
   </component>
 </project>

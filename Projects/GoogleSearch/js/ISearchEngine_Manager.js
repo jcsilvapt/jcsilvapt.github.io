@@ -1,7 +1,7 @@
 //Declaring a global variable which will be created in main function
 var app = null;
 var selectedColor = "none";
-var numshownpic = 30;
+var numshownpic = 32;
 var errorList = {
     color: "Atenção: Já tenho cor... mas não sei o que procurar :(",
     category: "Atenção: Não sei por onde deva começar... tenta escrever qualquer coisa!",
@@ -108,16 +108,22 @@ function displayResults(values, type) {
     let toPlace = document.getElementById("results");
     let controlImagesShown = (values.length < numshownpic) ? values.length : numshownpic;
     for (let i = 0; i < controlImagesShown; i++) {
-        let rDiv = document.createElement("div");
-        rDiv.classList.add("result");
-        rDiv.classList.add("shadow");
+        let fDiv = createFDiv();
         let image = document.createElement("img");
         image.src = (type === true) ? values[i].children[0].innerHTML : values[Math.floor(Math.random() * values.length)];
         image.id = "img" + i;
-        rDiv.appendChild(image);
-        toPlace.appendChild(rDiv);
+        fDiv.appendChild(image)
+        toPlace.appendChild(fDiv);
     }
 }
+
+function createFDiv() {
+    let p = document.createElement("div");
+    p.classList.add("crop");
+    p.classList.add("flex-fill");
+    return p;
+}
+
 
 function displayRandom() {
     let toPlace = document.getElementById("resultsRandom");
