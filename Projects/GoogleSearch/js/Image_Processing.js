@@ -46,7 +46,7 @@ class Picture {
             //let pixels = Generate_Image(cnv);
             this.hist = histcol.count_Pixels(pixels);
             //this.build_Color_Rect(cnv, this.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
-            //this.color_moments = colorMom.moments(this.imgobj, cnv);
+            this.color_moments = colorMom.moments(this.imgobj, cnv);
             document.dispatchEvent(eventP);
 
         } else {
@@ -59,7 +59,7 @@ class Picture {
                 //let pixels = Generate_Image(cnv);
                 self.hist = histcol.count_Pixels(pixels);
                 //self.build_Color_Rect(cnv, self.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
-                //self.color_moments = colorMom.moments(self.imgobj, cnv);
+                self.color_moments = colorMom.moments(self.imgobj, cnv);
                 document.dispatchEvent(eventP);
             }, false);
         }
@@ -145,7 +145,6 @@ class ColorHistogram {
             }
 
         }
-        console.log(histogram);
         return histogram;
     }
 }
@@ -196,13 +195,77 @@ class ColorMoments {
         let hBlock = Math.floor(imgobj.height / this.v_block);
         let n = wBlock * hBlock;
         let descriptor = [];
-
         let ctx = cnv.getContext("2d");
+        let imgByBlocksRGB = [];
+        let imgByBlocksHSV = [];
+
         ctx.drawImage(imgobj, 0, 0);
 
-        // this method should be completed by the students
+        // Obter o imageData de cada bloco da imagem e guardar cada um no array -> imgByBlocksRGB
+        for (let y = 0; y < this.h_block; ++y) {
+            for (let x = 0; x < this.v_block; ++x) {
+                imgByBlocksRGB.push(ctx.getImageData(x*wBlock, y*hBlock, wBlock, hBlock));
+            }
+        }
+
+        // Guardar informação HSV através do conteúdo RGB guardado no array criado anteriormente
+        for (let i = 0; i < imgByBlocksRGB.length; ++i) {
+            let blockHSV = [];
+            for (let k = 0; k < imgByBlocksRGB[i].data.length; k+=4) {
+                let red = imgByBlocksRGB[i].data[k];
+                let green = imgByBlocksRGB[i].data[k + 1];
+                let blue = imgByBlocksRGB[i].data[k + 2];
+                let hsv = this.rgbToHsv(red, green, blue);
+                let h = hsv[0];
+                let s = hsv[1];
+                let v = hsv[2];
+                blockHSV.push(h, s, v);
+            }
+            imgByBlocksHSV.push(blockHSV);
+        }
 
 
+        for (let j = 0; j < imgByBlocksHSV.length; ++j) {
+            let all_h = [];
+            let all_s = [];
+            let all_v = [];
+            let h_mean = 0;
+            let s_mean = 0;
+            let v_mean = 0;
+            let h_var = 0;
+            let s_var = 0;
+            let v_var = 0;
+
+            for (let w = 0; w < imgByBlocksHSV[j].length; w+=3) {
+                let h = imgByBlocksHSV[j][w];
+                let s = imgByBlocksHSV[j][w + 1];
+                let v = imgByBlocksHSV[j][w + 2];
+
+                all_h.push(h);
+                h_mean += h;
+                all_s.push(s);
+                s_mean += s;
+                all_v.push(v);
+                v_mean += v;
+            }
+
+            h_mean /= n;
+            s_mean /= n;
+            v_mean /= n;
+
+            for (let h = 0; h < n; ++h) {
+                h_var += Math.pow((all_h[h] - h_mean), 2);
+                s_var += Math.pow((all_s[h] - s_mean), 2);
+                v_var += Math.pow((all_v[h] - v_mean), 2);
+            }
+
+            h_var /= n;
+            s_var /= n;
+            v_var /= n;
+
+            descriptor.push(h_mean, h_var, s_mean, s_var, v_mean, v_var);
+        }
+        return descriptor;
     }
 }
 

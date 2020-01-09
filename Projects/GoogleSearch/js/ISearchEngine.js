@@ -43,7 +43,7 @@ class ISearchEngine {
 
     //Method to initialize the canvas. First stage it is used to process all the images
     init(cnv) {
-        if(this.loadStorage)
+        if (this.loadStorage)
             this.databaseProcessing(cnv);
     }
 
@@ -73,24 +73,8 @@ class ISearchEngine {
         }
     }
 
-    insertImage(canvas, img) {
-        let h12color = new ColorHistogram(this.redColor, this.greenColor, this.blueColor);
-        let colmoments = new ColorMoments();
-        let imgObj = window.URL.createObjectURL(img);
-        let image = new Picture(0, 0, this.imgWidth, this.imgHeight, imgObj, null);
-
-        let eventName = "processed_picture_" + image.impath;
-        let eventP = new Event(eventName);
-        image.computation(canvas, h12color, colmoments, eventP);
-        setTimeout(function () {
-            //TODO: Comparar imagem actual com outras imagens ;D
-        },2000);
-    }
-
-
     clearCanvas(cnv) {
         let ctx = cnv.getContext("2d");
-        console.log(cnv.width + " " + cnv.height);
         ctx.clearRect(0, 0, cnv.width, cnv.height);
     }
 
@@ -101,9 +85,8 @@ class ISearchEngine {
         this.allpictures.insert(img);
         console.log("image processed: " + this.allpictures.stuff.length + " " + eventname);
         if (this.allpictures.stuff.length === this.num_Images * this.categories.length) {
-            console.log("I'm logasdasdasd");
             this.createXMLColordatabaseLS();
-            //this.createXMLIExampledatabaseLS();
+            this.createXMLIExampledatabaseLS();
         }
     }
 
@@ -121,11 +104,11 @@ class ISearchEngine {
             }
         }
 
-        for(let i = 0; i < this.categories.length; i++) {
-            xmlRow += "<images>";
-            for(let c = 0; c < this.colors.length; c++) {
+        for (let i = 0; i < this.categories.length; i++) {
+            xmlRow = "<images>";
+            for (let c = 0; c < this.colors.length; c++) {
                 this.sortbyColor(c, imagesByCategory[i]);
-                for(let z = 0; z < 36; z++) {
+                for (let z = 0; z < 100; z++) {
                     xmlRow += "<image class='" + this.colors[c] + "'>";
                     xmlRow += "<path>" + imagesByCategory[i][z].impath + "</path>";
                     xmlRow += "</image>";
@@ -134,21 +117,6 @@ class ISearchEngine {
             xmlRow += "</images>";
             this.LS_db.saveLS_XML(this.categories[i], xmlRow);
         }
-/*        for(let i = 0; i < imagesByCategory.length; i++) {
-            xmlRow = "<images>";
-            for(let c = 0; c < this.colors.length; c++) {
-                this.sortbyColor(c, imagesByCategory[i]);
-                for(let z = 0; z < this.numshownpic; z++) {
-                    if(imagesByCategory[i][c].hist[z] >= limit) {
-                        xmlRow += "<image class='" + this.colors[i] + "'>";
-                        xmlRow += "<path>" + imagesByCategory[i][z].impath + "</path>";
-                        xmlRow += "</image>";
-                    }
-                }
-            }
-            xmlRow += "</images>";
-            this.LS_db.saveLS_XML(i, xmlRow);
-        }*/
     }
 
     //Method to create the XML database in the localStorage for Image Example queries
@@ -166,22 +134,20 @@ class ISearchEngine {
                 }
             }
         }
-
-        for(let i = 0; i < imagesByCategory.length; i++) {
-            for(let c = 0; c < imagesByCategory[i].length; c++) {
-                for(let z = 0; z < imagesByCategory[i].length; z++) {
+        for (let i = 0; i < imagesByCategory.length; i++) {
+            for (let c = 0; c < imagesByCategory[i].length; c++) {
+                for (let z = 0; z < imagesByCategory[i].length; z++) {
                     imagesByCategory[i][c].manhattanDist.push(this.calcManhattanDist(imagesByCategory[i][c], imagesByCategory[i][z]));
                 }
             }
         }
-
-        for(let i = 0; i < imagesByCategory.length; i++) {
-            for(let c = 0; c < imagesByCategory[i].length; c++) {
+        for (let i = 0; i < imagesByCategory.length; i++) {
+            for (let c = 0; c < imagesByCategory[i].length; c++) {
                 this.sortbyManhattanDist(c, imagesByCategory[i]);
                 let path = imagesByCategory[i][0].impath;
                 let list = imagesByCategory[i].slice(1, imagesByCategory[1].length);
                 xmlRow = "<images>";
-                for(let z = 0; z < 36; z++) {
+                for (let z = 0; z < 30; z++) {
                     xmlRow += "<image class='Manhattan'>";
                     xmlRow += "<path>" + list[z].impath + "</path>";
                     xmlRow += "</image>";
@@ -190,7 +156,6 @@ class ISearchEngine {
                 localStorage.setItem(path, xmlRow);
             }
         }
-
 
 
     }
@@ -241,30 +206,24 @@ class ISearchEngine {
 
     //Method to search images based on a selected color
     searchColor(category, color) {
-        let idxValue = -1;
-        for(let i = 0; i < this.categories.length; i++) {
-            if(this.categories[i] === category) {
-                idxValue = i;
-                break;
-            }
-        }
-        let results = this.LS_db.readLS_XML(idxValue);
-        let val = results.documentElement.querySelectorAll("img."+color);
-        if(val.length > 0) {
+        let results = this.LS_db.readLS_XML(category);
+        let val = results.documentElement.querySelectorAll("." + color);
+        if (val.length > 0) {
             return val;
-        }else {
+        } else {
             return this.searchKeywords(category);
         }
     }
 
     //Method to search images based on keywords
     searchKeywords(category) {
-        return this.XML_db.SearchXML(category, this.XML_db.loadXMLfile(this.XML_file), this.num_Images)
+        return this.XML_db.SearchXML(category, this.XML_db.loadXMLfile(this.XML_file), 300)
     }
 
     //Method to search images based on Image similarities
     searchISimilarity(IExample, dist) {
-        // this method should be completed by the students
+        let img = this.LS_db.readLS_XML(IExample);
+        return this.XML_db.SearchXML(dist, img, 30);
     }
 
     //Method to compute the Manhattan difference between 2 images which is one way of measure the similarity

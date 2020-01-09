@@ -33,8 +33,7 @@
                 <h5>Information</h5>
                 <p>Welcome, I'm sorry about this "bump" but it's required so you can enjoy this on its fullest, please
                     take a close look at the following steps.</p>
-                <p>:)</p>
-                <p><strong>Last Update: </strong>04/01/2020</p>
+                <p><strong>Last Update: </strong>09/01/2020</p>
                 <hr>
                 <h5>First Run</h5>
                 <p>So this project uses <strong>LocalStorage</strong> as a way to simulate a database. So in order
@@ -64,6 +63,29 @@
     </div>
 </div>
 <!-- /Informatiion Modal -->
+
+<!-- Information MODAL -->
+<div id="examplePic" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="examplePicLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Search With Images</h5>
+                <span><strong><i>This project doesn't work on mobile devices</i></strong></span>
+            </div>
+            <div class="modal-body">
+                <h5>Search with an Image</h5>
+                <p>Please choose one of the following images :)</p>
+                <hr>
+                <div id="resultsRandom">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Informatiion Modal -->
+
 <div class="container">
     <div id="alert" class="alert alert-info" role="alert">
         Atenção: Não sei o que procurar :(
@@ -106,8 +128,8 @@
             </div>
             <input type="search" id="searchValue" class="form-control" aria-label="Default" placeholder="Search Images"/>
             <div class="input-group-append">
-                <input type="file" id="fileInput" style="display: none" onchange="readFile(this)" accept="image/*"/>
-                <button class="btn btn-dark" onclick="openFileSearch()" type="button" data-toggle="tooltip" data-placment="top" title="Find equal images"><i class="far fa-images icon"></i></button>
+                <!--<input type="file" id="fileInput" style="display: none" onchange="readFile(this)" accept="image/*"/>-->
+                <button class="btn btn-dark" onclick="displayRandom()" type="button" data-toggle="modal" data-target="#examplePic" data-placment="top" title="Find equal images"><i class="far fa-images icon"></i></button>
             </div>
             <div class="input-group-append">
                 <button class="btn btn-secondary" onclick="normalSearch()" type="button">Search</button>
@@ -142,7 +164,7 @@
 </div>
 
 <!-- /Display Results -->
-<canvas id="hidden" width="2000" height="2000" style="display: block"></canvas>
+<canvas id="hidden" width="2000" height="2000" style="display: none"></canvas>
 <!-- Optional JavaScript -->
 <script src="js/Image_Processing.js"></script>
 <script src="js/XML_Database.js"></script>
@@ -164,8 +186,7 @@
     var categories = ["beach", "birthday", "face", "indoor", "manmade/artificial", "manmade/manmade", "manmade/urban", "marriage", "nature", "no_people", "outdoor", "party", "people", "snow"];
 
 
-    //window.onload = showInfo(); // Fully Working
-    window.onload = setupLS(true); // Teste Related
+    window.onload = showInfo(); // Fully Working
 
     function showInfo() {
         $('#modalInfo').modal({

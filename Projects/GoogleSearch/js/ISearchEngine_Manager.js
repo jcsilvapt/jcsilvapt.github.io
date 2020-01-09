@@ -1,7 +1,7 @@
 //Declaring a global variable which will be created in main function
 var app = null;
 var selectedColor = "none";
-var numshownpic = 15;
+var numshownpic = 30;
 var errorList = {
     color: "Atenção: Já tenho cor... mas não sei o que procurar :(",
     category: "Atenção: Não sei por onde deva começar... tenta escrever qualquer coisa!",
@@ -47,7 +47,7 @@ function Generate_Image(canvas) {
  * @param {boolean} False   - Move toda a informação para Baixo
  */
 function hasSearch(bool) {
-    clearContent();
+    clearContent("results");
     if (bool) { // Go UP
         moveSearchBar(true);
     } else { // Go Down
@@ -74,10 +74,11 @@ function moveSearchBar(bool) {
 
 /**
  * Função que limpa as imagens actualmente a serem mostradas.
+ * @param {string} place    ID to Clear
  */
 
-function clearContent() {
-    let node = document.getElementById("results");
+function clearContent(place) {
+    let node = document.getElementById(place);
     while (node.firstChild) {
         node.removeChild(node.firstChild);
     }
@@ -105,38 +106,62 @@ function getSearchValue() {
  */
 function displayResults(values, type) {
     let toPlace = document.getElementById("results");
-    let showedIdx = [];
     let controlImagesShown = (values.length < numshownpic) ? values.length : numshownpic;
-
     for (let i = 0; i < controlImagesShown; i++) {
-        let unique = true;
-        let idxRandom = -1;
-        while (unique) {
-            idxRandom = Math.floor(Math.random() * values.length);
-            let controlSrc = (type === true) ? values[idxRandom].getAttribute("src") : values[idxRandom];
-            let control = true;
-            for (let c = 0; c < showedIdx.length; c++) {
-                if (controlSrc === showedIdx[c]) {
-                    control = false;
-                    break;
-                } else {
-                    control = true;
-                }
-            }
-            if (control) {
-                showedIdx.push(controlSrc);
-                unique = !unique;
-            }
-        }
         let rDiv = document.createElement("div");
         rDiv.classList.add("result");
         rDiv.classList.add("shadow");
         let image = document.createElement("img");
-        image.src = (type === true) ? values[idxRandom].getAttribute("src") : values[idxRandom];
-        image.id = "img" + idxRandom;
+        image.src = (type === true) ? values[i].children[0].innerHTML : values[Math.floor(Math.random() * values.length)];
+        image.id = "img" + i;
         rDiv.appendChild(image);
         toPlace.appendChild(rDiv);
     }
+}
+
+function displayRandom() {
+    let toPlace = document.getElementById("resultsRandom");
+    let idxused = [];
+    for(let i = 0; i < 5; i++) {
+        let rDiv = document.createElement("div");
+        rDiv.classList.add("result");
+        rDiv.classList.add("shadow");
+        let image = document.createElement("img");
+        let idxCat = Math.floor(Math.random() * this.categories.length);
+        let cat = this.categories[idxCat];
+        let img = app.searchKeywords(cat);
+        let control = true;
+        let idx = -1;
+        while(control) {
+            idx = Math.floor(Math.random() * img.length);
+            let controlFinal = true;
+            for(let c = 0; c < idxused.length; c++) {
+                if(idxused[c] === idx) {
+                    controlFinal = false;
+                    break;
+                }
+            }
+            if(controlFinal) {
+                idxused.push(idx);
+                control = false;
+            }
+        }
+        image.src = img[idx];
+        image.id = img[idx];
+        image.onclick = function() {
+            let vals = app.searchISimilarity(image.id, "Manhattan");
+            hasSearch(true);
+            displayResults(vals, false);
+            $('#examplePic').modal('hide');
+            clearContent("resultsRandom");
+        }
+        rDiv.appendChild(image);
+        toPlace.appendChild(rDiv);
+    }
+}
+
+function clearRandom() {
+    let plac
 }
 
 /**
@@ -166,11 +191,7 @@ function colorSearch() {
         let images = app.searchColor(searchValue, selectedColor);
         if (images.length > 0) {
             hasSearch(true);
-            if(images.length >= 99) {
-                displayResults(images, false);
-            }else {
-                displayResults(images, true);
-            }
+            displayResults(images, true);
         } else {
             triggerAlert(errorList.noWord);
         }
