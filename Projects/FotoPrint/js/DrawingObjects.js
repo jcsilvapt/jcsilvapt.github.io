@@ -76,8 +76,9 @@ class Rect extends DrawingObjects {
     draw(cnv) {
         let ctx = cnv.getContext("2d");
 
-        ctx.fillRect(this.posx, this.posy, this.x, this.y);
-        ctx.restore();
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.posx, this.posy, this.w, this.h);
+
     }
 
     mouseOver(mx, my) {

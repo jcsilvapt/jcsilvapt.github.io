@@ -105,7 +105,7 @@ class FotoPrint {
                 item = new insertText(obj.posx + 20, obj.posy + 20, obj.textSize, obj.color, obj.textValue);
                 break;
             case "S":
-                item = new Smile(obj.posx + 20, obj.posy + 20, obj.textSize, obj.color, obj.textValue);
+                item = new Smile(obj.posx + 20, obj.posy + 20, obj.w, obj.h, obj.color);
                 break;
             default:
                 throw new TypeError("Can not clone this type of object");
