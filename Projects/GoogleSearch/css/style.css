@@ -5,46 +5,28 @@ body {
     background-color: lavender;
 }
 
-/* For reaserch propuses */
-.colorTest {
-    background-color: red;
-}
-
-.card {
-    background-color: red;
-    border-radius: 5px;
-}
-
-.card-body {
-    text-align: center;
-}
-
-.myForm {
-    top: 25px;
-    height: 90px;
-    text-align: center;
-    font-size: 2rem;
-    width: 333px;
-    margin: auto;
-    transition: 1s;
-    background-color: lavender;
-    border: none;
-    border-bottom: 1px solid #ced4da;
-}
-
-.myForm:active {
-    background-color: lavender;
-    border: none;
-}
-input[type="textarea"]:focus {
-    background-color: initial;
-    outline: none !important;
-}
-
-.myForm:hover {
+.resultsHolder {
+    display: flex;
+    flex-flow: row wrap;
     width: 100%;
-    background-color: initial;
-    border: none;
-    background-color: lavender;
-    border-bottom: 1px solid #ced4da;
+}
+
+.resultsList {
+    -webkit-box-flex: 1;
+    flex: auto;
+    height: 300px;
+    min-width: 100px;
+}
+
+.result {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.imgFixed {
+    display: block;
+    width: 100%;
 }

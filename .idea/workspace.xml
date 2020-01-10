@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe4d10e8-e084-46b5-8485-3c7cea79ad48" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
@@ -17,22 +23,40 @@
     <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="ProjectId" id="1RZX0u0jBcTk2tW7INKFmq7kx48" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../teste" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ISEL\2019-20\1º Semestre\PCM\Projetos\Portfolio\jcsilvapt.github.io\Projects\GoogleSearch\Images" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -52,6 +76,26 @@
       <workItem from="1570033197990" duration="2858000" />
       <workItem from="1570723942590" duration="13191000" />
       <workItem from="1571089014456" duration="95000" />
+      <workItem from="1576955896986" duration="90000" />
+      <workItem from="1577388608360" duration="10004000" />
+      <workItem from="1577466602352" duration="3168000" />
+      <workItem from="1577544443176" duration="3324000" />
+      <workItem from="1577752353651" duration="3882000" />
+      <workItem from="1577801985441" duration="701000" />
+      <workItem from="1577804781064" duration="2168000" />
+      <workItem from="1577816335407" duration="1883000" />
+      <workItem from="1577905617707" duration="6728000" />
+      <workItem from="1577980539663" duration="6192000" />
+      <workItem from="1577987360039" duration="4316000" />
+      <workItem from="1578098618599" duration="2526000" />
+      <workItem from="1578141147512" duration="22029000" />
+      <workItem from="1578240023080" duration="4845000" />
+      <workItem from="1578250377764" duration="661000" />
+      <workItem from="1578417174870" duration="21631000" />
+      <workItem from="1578509248427" duration="9367000" />
+      <workItem from="1578529066016" duration="87000" />
+      <workItem from="1578529245974" duration="1126000" />
+      <workItem from="1578606849081" duration="6443000" />
     </task>
     <servers />
   </component>
@@ -70,5 +114,36 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="184" key="#Notifications" timestamp="1577388856590">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="184" key="#Notifications/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1576955913002" />
+    <state x="552" y="184" key="#Notifications/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1577388856590" />
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1577393134615">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1577393134615" />
+    <state x="740" y="281" key="FileChooserDialogImpl" timestamp="1577388624889">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="281" key="FileChooserDialogImpl/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1577388624889" />
+    <state x="461" y="168" key="SettingsEditor" timestamp="1578419433326">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="168" key="SettingsEditor/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1578419433326" />
+    <state x="769" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577545331768">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="769" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1577545331768" />
+    <state x="657" y="123" width="606" height="804" key="find.popup" timestamp="1577981093217">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="657" y="123" width="606" height="804" key="find.popup/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1577981093217" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578610256065">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.4.1920.1050@0.0.1920.1050" timestamp="1578610256065" />
   </component>
 </project>

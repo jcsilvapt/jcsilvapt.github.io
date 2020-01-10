@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    background-image: url("../Images/bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html, body {
+    height: 100%;
+}
+
+.nav-link {
+    padding: 0px;
+    transition: 0.2s;
+}
+
+
+.underline {
+    width: 60%;
+    height: 1px;
+    margin-left: 5px;
+    background-color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.nav-item:hover > .underline {
+    opacity: 1;
+}
+
+.container-middle {
+    height: 90%; /* Default 90% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.6s;
+}
+
+.container-middle-top {
+    height: 10%;
+}
+
+.content {
+    width: 50%;
+    height: 10%;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.moreOption {
+    background-color: rgba(0,4,14,0.75);
+    margin-top: -17px;
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    opacity: 0;
+    transition: 0.5s;
+    padding-left: 5px;
+}
+
+.moreOptionShow {
+    position: relative;
+    opacity: 1;
+}
+
+.resultsHolder {
+    background-color: rgba(0,4,14,0.75);
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    margin-top: 50px;
+    height: 100%;
+    display: none;
+}
+
+.close {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.close:hover, .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.result {
+    width: 20%;
+    padding: 10px;
+    height: 200px;
+    display: inline-flex;
+}
+
+.result:hover {
+    border: 1px solid white;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.alert {
+    position: absolute;
+    width:60%;
+    top: -100px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.alertTrigger {
+    opacity: 1;
+    top: 55px;
+}
+
+/* AutoComplete Features */
+
+.autocomplete-items {
+    position: absolute;
+    float: left;
+    height: auto;
+    background: rgba(255,255,255, 0.25);
+    width: 100%;
+    max-width: 841px;
+    padding: 5px;
+    margin-left: 33px;
+    margin-top: 5px;
+    top: 35px;
+    transition: 0.5s;
+    box-shadow: 0px 0px 15px #CCC;
+    color: white;
+    /*    border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        top: 100%;
+        left: 0;
+        right: 0;*/
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items:hover {
+    background-color: dodgerblue !important;
+    color: black;
+}
+
+.textColor {
+    color: dodgerblue;
+}
+
+.icon {
+    color: gray;
+    transition: 0.2s;
+}
+
+.icon:hover {
+    color:white;
+}
+
+.crop {
+    height: 220px;
+    min-width: 200px;
+    width: 25%;
+    overflow: hidden;
+    display: inline-block;
+    padding: 15px;
+}
+
+.crop img {
+    height: auto;
+    width: 430px;
+    margin-bottom: 50px;
+    object-fit:scale-down;
+}

@@ -1,22 +1,21 @@
 class XML_Database {
-    constructor () {
+    constructor() {}
 
-    }
-
-    loadXMLfile (filename) {
+    loadXMLfile(filename) {
         let xmlhttp = {};
         let xmlDoc = {};
+        console.log("LoadingXMLFile");
 
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("POST", filename, false);
+        xmlhttp.open("GET", filename, false);
         xmlhttp.send();
         xmlDoc = xmlhttp.responseXML;
         return xmlDoc;
     }
 
-    SearchXML (query, xmlDoc, num_Img) {
+    SearchXML(query, xmlDoc, num_Img) {
         let Images_path = [];
         let x = xmlDoc.getElementsByClassName(query);
         if (num_Img > x.length) {
@@ -35,54 +34,28 @@ class XML_Database {
     }
 }
 
-
 class LocalStorageXML {
+    constructor() {}
 
-    constructor() {
-
-    }
-
-    saveLS_XML (keyname, xmlRowString) {
-        if (typeof(localStorage) == 'undefined')
-            alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+    saveLS_XML(keyname, xmlRowString) {
+        if (typeof localStorage == "undefined") alert("Your browser does not support HTML5 localStorage. Try upgrading.");
         else {
             try {
                 localStorage.setItem(keyname, xmlRowString);
-            }
-            catch (e) {
+            } catch (e) {
                 alert("save failed!");
-                if (e == QUOTA_EXCEEDED_ERR)
-                    alert('Quota exceeded!');
+                if (e == QUOTA_EXCEEDED_ERR) alert("Quota exceeded!");
             }
         }
     }
 
-    readLS_XML (keyname) {
+    readLS_XML(keyname) {
         let localStorageRow = localStorage.getItem(keyname);
         let xmlDoc = null;
 
         if (window.DOMParser) {
             let parser = new DOMParser();
-            return xmlDoc = parser.parseFromString(localStorageRow, "text/xml");
-        }
-        else throw new TypeError("LocalStorageXML-readLS_XML: Error with DOMParser");
+            return (xmlDoc = parser.parseFromString(localStorageRow, "text/xml"));
+        } else throw new TypeError("LocalStorageXML-readLS_XML: Error with DOMParser");
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-   
