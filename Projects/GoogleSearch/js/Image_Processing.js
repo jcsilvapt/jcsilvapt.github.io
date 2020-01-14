@@ -201,14 +201,12 @@ class ColorMoments {
 
         ctx.drawImage(imgobj, 0, 0);
 
-        // Obter o imageData de cada bloco da imagem e guardar cada um no array -> imgByBlocksRGB
         for (let y = 0; y < this.h_block; ++y) {
             for (let x = 0; x < this.v_block; ++x) {
                 imgByBlocksRGB.push(ctx.getImageData(x*wBlock, y*hBlock, wBlock, hBlock));
             }
         }
 
-        // Guardar informação HSV através do conteúdo RGB guardado no array criado anteriormente
         for (let i = 0; i < imgByBlocksRGB.length; ++i) {
             let blockHSV = [];
             for (let k = 0; k < imgByBlocksRGB[i].data.length; k+=4) {

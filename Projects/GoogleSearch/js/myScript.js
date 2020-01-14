@@ -15,7 +15,7 @@ searchPlace.addEventListener("keyup", function (event) {
         resetSearch();
         hasSearch(false);
         randomWord(category);
-        if(getShowOptions())
+        if (getShowOptions())
             showOptions();
     }
 });
@@ -89,7 +89,7 @@ function autocomplete(inp, arr) {
             b,
             i,
             val = this.value;
-        /*close any already open lists of autocompleted values*/
+        /*close any already open lists of autocomplete values*/
         closeAllLists();
         if (!val) {
             return false;
@@ -101,6 +101,7 @@ function autocomplete(inp, arr) {
         a.setAttribute("class", "autocomplete-items");
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
+        console.log(inp.value);
         /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
             /*check if the item starts with the same letters as the text field value:*/
@@ -193,7 +194,7 @@ function autocomplete(inp, arr) {
 function randomWord(categories) {
     category = categories;
     let idx = Math.floor(Math.random() * categories.length);
-    document.getElementById("searchValue").placeholder = "Search Images... try writing '" + categories[idx] +"'";
+    document.getElementById("searchValue").placeholder = "Search Images... try writing '" + categories[idx] + "'";
 }
 
 /**
