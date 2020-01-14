@@ -169,9 +169,9 @@ class ColorMoments {
         let h = null, s = null, v = max;
 
         let dif = max - min;
-        s = max == 0 ? 0 : dif / max;
+        s = max === 0 ? 0 : dif / max;
 
-        if (max == min) {
+        if (max === min) {
             h = 0;
         } else {
             switch (max) {
@@ -201,12 +201,14 @@ class ColorMoments {
 
         ctx.drawImage(imgobj, 0, 0);
 
+
+        // Divisão da imagem em 9 Partes
         for (let y = 0; y < this.h_block; ++y) {
             for (let x = 0; x < this.v_block; ++x) {
                 imgByBlocksRGB.push(ctx.getImageData(x*wBlock, y*hBlock, wBlock, hBlock));
             }
         }
-
+        // Conversão para HSV
         for (let i = 0; i < imgByBlocksRGB.length; ++i) {
             let blockHSV = [];
             for (let k = 0; k < imgByBlocksRGB[i].data.length; k+=4) {
@@ -222,7 +224,7 @@ class ColorMoments {
             imgByBlocksHSV.push(blockHSV);
         }
 
-
+        // Calculo da Média e Variância
         for (let j = 0; j < imgByBlocksHSV.length; ++j) {
             let all_h = [];
             let all_s = [];

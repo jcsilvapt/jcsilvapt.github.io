@@ -180,6 +180,7 @@
 
 
     window.onload = showInfo(); // Fully Working
+    //window.onload = setupLS(false); // For Testing
 
     function showInfo() {
         $('#modalInfo').modal({
@@ -189,6 +190,10 @@
         randomWord(categories);
     }
 
+    /**
+     * Controlo de LocalStorage Load, True carrega o localStorage. False não carrega.
+     * @param {boolean} value
+     */
     function setupLS(value) {
         autocomplete(document.getElementById("searchValue"), categories);
         if (value) {
