@@ -1,0 +1,38 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat, sans-serif !important;
+}
+
+html {
+    background: url(../images/temp_background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
+#smallNav {
+    height: 100%;
+    width: 80px;
+    background-color: white;
+    transition: 0.5s;
+}
+
+#sTitle {
+    width: 80px;
+    height: 100px;
+    background-color: #ff5e3a;
+    transition: 0.5s;
+}
+
+#nav {
+    background-color: white;
+    width: 0px;
+}
