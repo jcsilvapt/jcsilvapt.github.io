@@ -36,7 +36,7 @@ nav ul li a {
 }
 
 .movie-filter {
-    height: 98vh;
+    max-height: 100vh;
 }
 
 .header-bh {
@@ -56,6 +56,10 @@ hr {
     display: block;
     margin: 2.4rem auto;
     text-align: center;
+    width: 100%;
+}
+
+video {
     width: 100%;
 }
 
@@ -397,6 +401,14 @@ hr {
 }
 
 #aboutMe {
+    width: 100%;
+    height: auto;
+    background: #f7f7f7;
+    padding-top: 190px;
+    padding-bottom: 140px;
+}
+
+#contacts {
     width: 100%;
     height: auto;
     background: #f7f7f7;
