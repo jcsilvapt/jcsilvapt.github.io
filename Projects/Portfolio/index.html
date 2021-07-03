@@ -28,7 +28,6 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<!--
 <div id="loader-wrapper">
     <div id="loader"></div>
     <div class="abs">
@@ -37,8 +36,7 @@
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
--->
-<!--
+
 <div id="content">
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" id="navy">
         <div class="container">
@@ -51,7 +49,7 @@
                 <ul class="navbar-nav ml-auto">
                     <span id='mainNav'></span>
                     <li class="nav-item">
-                        <a class="nav-link" href="#content">Home</a>
+                        <a class="nav-link" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#skills">Skills</a>
@@ -69,11 +67,97 @@
             </div>
         </div>
     </nav>
--->
+
+    <!--Carousel Wrapper-->
+    <div id="home" class="carousel slide carousel-fade" data-ride="carousel" style="margin-top: 5px">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#video-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#video-carousel" data-slide-to="1"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="movie-filter">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active movie-filter">
+                    <video class="video-fluid " autoplay loop muted>
+                        <source src="./assets/videos/intro.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <!--
+                <div class="carousel-item movie-filter">
+                    <video class="video-fluid " autoplay loop muted>
+                        <source src="./assets/videos/vid1.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+            -->
+                <div class="header-bh">
+                    <h1 class="font-weight-light text-white">Welcome</h1>
+                    <p class="lead">May the scroll be with you</p>
+                </div>
+            </div>
+        </div>
+        <!--/.Slides-->
+        <!--Controls
+        <a class="carousel-control-prev" href="#video-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#video-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        /.Controls-->
+    </div>
+    <!--Carousel Wrapper-->
+    <hr class="progressDiv">
+    <section id="skills" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="sub-title"
+                        style="text-align: center;font-family: 'Open Sans', sans-serif;font-size: 1.5rem;">Skills</h1>
+                    <div class="widget-sep"><span></span></div>
+                    <p class="setMiddle">Take a look at my skills probably you'll find it useful</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="Content-Box">
+                        <div class="post-thumbnail"><a class="post-thumbnail" href="#"><i
+                                class="fa fa-keyboard iconSize iColor"></i></a></div>
+                        <h1 class="setMiddle textSetting">Programing Languages</h1>
+                        <div class="widget-sep"></div>
+                        <p style="text-align: center;"><br>Python, Java, C++, PHP<br><br></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="Content-Box">
+                        <div class="post-thumbnail"><a class="post-thumbnail" href="#"><i
+                                class="fa fa-window-maximize iconSize iColor"></i></a></div>
+                        <h1 class="setMiddle textSetting">Web Development</h1>
+                        <div class="widget-sep"></div>
+                        <p style="text-align: center;"><br>HTML, CSS, JavaScript, JQuery, PHP<br><br></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="Content-Box">
+                        <div class="post-thumbnail"><a class="post-thumbnail" href="#"><i
+                                class="fas fa-gamepad iconSize iColor"></i></a></div>
+                        <h1 class="setMiddle textSetting">3D Modelation & Animation</h1>
+                        <div class="widget-sep"></div>
+                        <p style="text-align: center;"><br>Unity, Blender, Z-Brush<br><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax"></div>
 
     <section id="aboutMe">
-        <div class="container h-100">
-            <div class="row h-100 justify-content-between">
+        <div class="container">
+            <div class="row justify-content-between">
                 <div class="col-lg-4">
                     <div class="div-img-bg">
                         <div class="about-img">
@@ -92,51 +176,6 @@
                             voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                             cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <section id="skills" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="sub-title"
-                        style="text-align: center;font-family: 'Open Sans', sans-serif;font-size: 1.5rem;">Skills</h1>
-                    <div class="widget-sep"><span></span></div>
-                    <p class="setMiddle">Take a look at my skills probably you'll find it useful</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="Content-Box">
-                        <div class="post-thumbnail">
-                            <a class="post-thumbnail" href="#"><i class="fa fa-keyboard iconSize iColor"></i>
-                            </a>
-                        </div>
-                        <h1 class="setMiddle textSetting">Languages</h1>
-                        <div class="widget-sep"></div>
-                        <p style="text-align: center;"><br>C#, Java, Python, PHP<br><br></p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="Content-Box">
-                        <div class="post-thumbnail"><a class="post-thumbnail" href="#"><i
-                                class="fa fa-window-maximize iconSize iColor"></i></a></div>
-                        <h1 class="setMiddle textSetting">Web Development</h1>
-                        <div class="widget-sep"></div>
-                        <p style="text-align: center;"><br>HTML, CSS, JavaScript, JQuery<br><br></p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="Content-Box">
-                        <div class="post-thumbnail"><a class="post-thumbnail" href="#"><i
-                                class="fas fa-gamepad iconSize iColor"></i></a></div>
-                        <h1 class="setMiddle textSetting">3D Modelation & Animation</h1>
-                        <div class="widget-sep"></div>
-                        <p style="text-align: center;"><br>Unity, Blender<br><br></p>
                     </div>
                 </div>
             </div>
@@ -239,15 +278,13 @@
 	
 	<section id="contacts">
 		<div class="container text-center">
-            <div class="about-descr">
-			    <h1>Contacts</h1>
-                <p class="seperator">Got any cool project and you need help? Send me a message at <a href="#">naoexistologonaopenso@quaseGmail.pt</p>
-            </div>
+			<h2>Contactos</h2>
+			<p class="lead">Para entrar em contacto comigo enviar um email para: <a href="#">naoexistologonaopenso@quaseGmail.pt</p>
 		</div>
 	</section>
 
     <!-- Footer -->
-    <footer class="page-footer font-small special-color-dark pt-4">
+    <footer id="contacts" class="page-footer font-small special-color-dark pt-4">
 
         <!-- Footer Elements -->
         <div class="container">
@@ -290,6 +327,6 @@
 
 
 </script>
-<!--<script src="./assets/js/main.js"></script>-->
+<script src="./assets/js/main.js"></script>
 </body>
 </html>
