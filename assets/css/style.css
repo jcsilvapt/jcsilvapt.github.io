@@ -77,7 +77,7 @@ a:hover {
 }
 
 .background {
-    background-image: url("https://inspirationfeed.com/wp-content/uploads/2015/04/blurred-background.jpg");
+    background-image: url("/assets/images/rightImage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
